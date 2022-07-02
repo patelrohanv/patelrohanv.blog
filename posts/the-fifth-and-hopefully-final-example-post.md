@@ -1,7 +1,7 @@
 ---
 title: Hinduism and Sin
 date: 2019-02-28T08:55:45.645Z
-author: Jane Doe
+author: Rohan
 summary: stuff about sin
 tags: []
 ---
