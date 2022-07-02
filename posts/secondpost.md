@@ -2,9 +2,8 @@
 title: Karma Yoga
 date: 2017-07-12T08:28:00.000Z
 author: Rohan
-summary: Why contemplating our mortality can be a powerful catalyst for change
-tags:
-  - sport
+summary: work
+tags: []
 ---
 "If you can invariably take take the position of a giver, in which everything given by you is a free offering to the world, without any thought of return, then will your work bring you no attachment. Attachment comes only where we expect a return . . . Now you see what Karma-Yoga means; even at the point of death to help anyone, without asking questions. Be cheated millions of times and never ask question, and never think of what you are doing. Never vaunt of your gifts to the poor or expect their gratitude, but rather be grateful to them for giving you the occasion of practicing charity to them"
 
