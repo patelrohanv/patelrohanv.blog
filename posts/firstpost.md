@@ -3,7 +3,7 @@ title: First Post
 metaDescription: This is a sample meta description. If one is not present in
   your page/post's front matter, the default metadata.desciption will be used
   instead.
-date: 2017-06-20T23:00:00.000Z
+date: 2017-06-21T04:07:00.000Z
 author: Rohan
 summary: tldr starting a blog
 tags: []
