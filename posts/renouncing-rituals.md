@@ -1,7 +1,7 @@
 ---
 title: Renouncing Rituals
 date: 2019-08-17T04:17:47.461Z
-author: Rohan
+author: rohan
 summary: "tldr simpler is better "
 tags: []
 ---

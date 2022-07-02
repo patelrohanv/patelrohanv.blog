@@ -1,7 +1,7 @@
 ---
 title: Changing Directions
 date: 2021-12-23T04:19:20.635Z
-author: Rohan
+author: rohan
 summary: tldr shouting into the void
 tags: []
 ---

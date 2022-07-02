@@ -1,7 +1,7 @@
 ---
 title: First Post
 date: 2017-06-21T04:07:00.000Z
-author: Rohan
+author: rohan
 summary: tldr starting a blog
 tags: []
 ---

@@ -1,7 +1,7 @@
 ---
 title: The Soul and God
 date: 2019-08-17T04:24:13.839Z
-author: Rohan
+author: rohan
 summary: tldr nothing is not divine
 tags: []
 ---

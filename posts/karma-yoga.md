@@ -1,7 +1,7 @@
 ---
 title: Karma Yoga
 date: 2017-07-12T08:28:00.000Z
-author: Rohan
+author: rohan
 summary: work
 tags: []
 ---

@@ -1,7 +1,7 @@
 ---
 title: Pokemon and Spirituality
 date: 2019-02-15T10:41:00.000Z
-author: Rohan
+author: rohan
 summary: more Swami Vivekanada
 tags: []
 ---

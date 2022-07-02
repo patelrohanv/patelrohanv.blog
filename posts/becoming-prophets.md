@@ -1,7 +1,7 @@
 ---
 title: Becoming Prophets
 date: 2019-05-22T08:10:54.503Z
-author: Rohan
+author: rohan
 summary: tldr don't worship a prophet, be one yourself
 tags: []
 ---

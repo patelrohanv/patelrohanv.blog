@@ -1,7 +1,7 @@
 ---
 title: Public Worship and Hinduism
 date: 2019-02-16T10:46:00.000Z
-author: Rohan
+author: rohan
 summary: Stuff about public workship
 tags: []
 ---
