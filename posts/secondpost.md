@@ -1,15 +1,15 @@
 ---
-title: This is the second example post
-date: 2022-07-02T04:12:49.411Z
-author: John Appleseed
+title: Karma Yoga
+date: 2017-07-12T08:28:00.000Z
+author: Rohan
 summary: Why contemplating our mortality can be a powerful catalyst for change
 tags:
   - sport
 ---
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+"If you can invariably take take the position of a giver, in which everything given by you is a free offering to the world, without any thought of return, then will your work bring you no attachment. Attachment comes only where we expect a return . . . Now you see what Karma-Yoga means; even at the point of death to help anyone, without asking questions. Be cheated millions of times and never ask question, and never think of what you are doing. Never vaunt of your gifts to the poor or expect their gratitude, but rather be grateful to them for giving you the occasion of practicing charity to them"
 
-## Section Header
+\-- Complete Works of Swami Vivekananda, 1.2.3 Chapter 3: The Secret of Work
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+I recently read this lecture by Swami Vivekanda into the basics to Karma Yoga. I've noticed in life that we often give something our all and expect the result to be an outcome that we want. We think we deserve that outcome because of all the effort we put into it and we think we should be praised because of that work. And then when the opposite happens, we get sad because we didn't get what we felt we deserved.
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+I find that Karma Yoga seems to have a fix for this, instead of doing an action or work in order to get some kind of reward we should instead be doing work for work's sake. In reality we are guaranteed nothing in life so we might as well put forth our max effort and accept whatever outcome may come. We can't decide what an outcome may be but we can decide how much effort we put into our work and how we react to it.
