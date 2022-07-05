@@ -97,7 +97,11 @@ tags:
 
 ##### Volume Types
 
-*(IPOS = Input/output operations per second )*
+*(IPOS = Input/output operations per second)*
+
+*(OLTP = online transaction processing)*
+
+*(ETL = extract, transform, and load)*
 
 * IOPS vs Throughput
 
@@ -114,6 +118,7 @@ tags:
 * General Purpose SSD (gp2)
 
   * suitable for boot disks and general applications
+  * suitable for applications that are not latency sensitive
   * up to 16,000 IOPS per volume
   * up to 99.9% durability
 * Provisioned IOPS SSD (io1)
@@ -125,20 +130,22 @@ tags:
   * high performance and the most expensive
 * Provisioned IOPS SSD (io2)
 
-  * suitable for OLTP and latency sensitive applications
+  * suitable for OLTP, I/O intensive applications, large databases, latency sensitive workloads
   * 500 IOPS/GiB
   * up to 64,000 IOPS per volume
   * up to 99.999% durability
   * latest generation provisioned IOPS volume
+  * same price as io1
 * Throughput Optimized HHD (st1)
 
-  * suitable for Big Data, data warehouses, ETL
+  * suitable for Big Data, data warehouses, ETL, log processing, throughput intensive workloads
   * cannot be boot volume
   * max throughput of 500 MB/s per volume
   * up to 99.9% durability
 * Cold HDD (sc1)
 
   * suitable for less frequently accessed data
+  * suitable for applications where performance is not a factor
   * cannot be boot volume
   * max throughput of 250 MB/s per volume
   * up to 99.9% durability
