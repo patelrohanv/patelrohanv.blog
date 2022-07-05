@@ -1,8 +1,10 @@
 ---
-title: "DVA-C01 studying -  EC2, EBS, "
+title: DVA-C01 studying -  EC2, EBS, Elastic Load Balancer, RDS, Elasticache
 date: 2022-07-05T15:15:27.099Z
 author: rohan
-summary: studying for the AWS Certified Developer Associate exam - Elastic Compute Cloud
+summary: studying for the AWS Certified Developer Associate exam - Elastic
+  Compute Cloud, Elastic Block Store, Elastic Load Balancer, Relational Database
+  Service, Elasticache
 tags:
   - DVA-C01
   - software-dev
