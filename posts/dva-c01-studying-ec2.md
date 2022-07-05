@@ -85,7 +85,7 @@ tags:
 
 ##### What it is
 
-* https://aws.amazon.com/ebs/
+* <https://aws.amazon.com/ebs/>
 * storage volumes (disks) you can attach to your instance 
 
   * can be used like system storage - file systems, databases, operating systems, data storage, install applications/services, etc.
@@ -99,28 +99,65 @@ tags:
 
 *(IPOS = Input/output operations per second )*
 
+* IOPS vs Throughput
+
+  * IOPS
+
+    * ability to r/w quickly
+    * measures number of r/w operations per second
+    * metric for quick transactions, low latency apps, transactional workloads
+  * Throughput
+
+    * ability to deal with large datasets
+    * measures the number of bits r/w per second (MB/s)
+    * metric for large datasets, large I/O sizes, complex queries
 * General Purpose SSD (gp2)
 
   * suitable for boot disks and general applications
   * up to 16,000 IOPS per volume
   * up to 99.9% durability
 * Provisioned IOPS SSD (io1)
+
+  * suitable for OLTP and latency sensitive applications
+  * 50 IOPS/GiB
+  * up to 64,000 IOPS per volume
+  * up to 99.9% durability
+  * high performance and the most expensive
 * Provisioned IOPS SSD (io2)
+
+  * suitable for OLTP and latency sensitive applications
+  * 500 IOPS/GiB
+  * up to 64,000 IOPS per volume
+  * up to 99.999% durability
+  * latest generation provisioned IOPS volume
 * Throughput Optimized HHD (st1)
-* COLD HDD (sc1)
 
-### Elastic Load Balancer -
+  * suitable for Big Data, data warehouses, ETL
+  * cannot be boot volume
+  * max throughput of 500 MB/s per volume
+  * up to 99.9% durability
+* Cold HDD (sc1)
 
-##### What it is
+  * suitable for less frequently accessed data
+  * cannot be boot volume
+  * max throughput of 250 MB/s per volume
+  * up to 99.9% durability
+  * lowest cost
 
-### CLI -
+### Elastic Load Balancer
+
+* <https://aws.amazon.com/elasticloadbalancing/>
 
 ##### What it is
 
 ### RDS -
 
+* <https://aws.amazon.com/rds/>
+
 ##### What it is
 
 ### Elasticache
+
+* <https://aws.amazon.com/elasticache/>
 
 ##### What it is
