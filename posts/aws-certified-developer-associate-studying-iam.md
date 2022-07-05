@@ -1,7 +1,7 @@
 ---
 title: DVA-C01 studying -  IAM
 date: 2022-07-05T05:10:05.420Z
-author: Rohan
+author: rohan
 summary: studying for the AWS Certified Developer Associate exam - Identity and
   Access Management
 tags:
