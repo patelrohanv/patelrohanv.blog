@@ -224,6 +224,54 @@ tags:
   * focused on data analysis with large volumes of data and complex, long-running queries
   * not suitable for RDS, consider using a data warehouse like RedShift
 
+##### Multi-AZ and read replicas
+
+* Mutli-AZ
+
+  * exact copy of your production database in another availability zone (primary and standby)
+  * standby instance is not typically available unless the primary instance is down, RDS will then automatically failover to the standby without an admin
+  * RDS handles the replication for you
+  * supports all RDS database engines
+  * used for disaster recovery, **not for scalability**
+* Read Replicas
+
+  * read-only copy of your production database
+  * great for read heavy workloads and reduces the load on your primary instance 
+  * can be in the same AZ as your primary database instance or cross AZ (different AZ) or cross region (entirely different region)
+  * each read replica has its own DNS endpoint
+  * read replicas can be promoted to be their own independent databases (adds write access but breaks replication from the original primary instance)
+  * used for scaling read performance
+  * requires automatic backups
+  * multiple read replicas supported
+
+##### Backups and Snapshots
+
+* Automated Backups
+
+  * enabled by default
+  * creates full daily backups or snapshots during your defined backup window
+
+    * during the backup window your storage I/O may be suspended for a couple seconds
+  * uses transaction logs to replay transactions
+  * allows for a point-in recovery for **any point in time** within your retention period 
+  * stored in S3, free storage equal to your RDS instance type
+* Database Snapshot
+
+  * manual process (not automated)
+  * creates a snapshot of the storage volume attached to the DB instance
+  * allows you to backup to a known state
+  * no retention period
+  * stored in S3, free storage equal to your RDS instance type
+* Restored versions of a database will always be a **new** RDS instance with a **new** DNS endpoint
+* Encryption
+
+  * enable encryption at **creation time**
+  * completely integrated with KMS (AES-256 encryption) 
+  * includes all the underlying storage, automated backups, snapshots, logs, read-replicas, etc. 
+  * you cannot enable encryption on an existing unencrypted RDS instance
+
+    * workaround. take a snapshot of the unencrypted database, encrypt the snapshop, perform a db restore using the encrypted snapshop 
+
 ### Elasticache
 
 * <https://aws.amazon.com/elasticache/>
