@@ -1,5 +1,5 @@
 ---
-title: DVA-C01 studying -  EC2
+title: "DVA-C01 studying -  EC2, EBS, "
 date: 2022-07-05T15:15:27.099Z
 author: rohan
 summary: studying for the AWS Certified Developer Associate exam - Elastic Compute Cloud
@@ -157,14 +157,95 @@ tags:
 
 ##### What it is
 
-### RDS -
+* distributes network traffic across multiple servers
+
+##### Load Balancer Types
+
+* Application Load Balancer
+
+  * suitable for load balancing HTTP and HTTPS traffic
+  * operate at Layer 7 and are application aware (<https://en.wikipedia.org/wiki/OSI_model>) - NOT ON EXAM
+
+    * Layer 7 is the application layer - HTTP, what the end user sees, high level APIs, remote file access
+    * Layer 6 is the presentation layer - transitioning data between the network and application: character encoding, data compression and encryption/decryption
+    * Layer 5 is the session layer - manages communication sessions 
+    * Layer 4 is the transport layer - transmitting data segments between two points on the network using TCP and UDP
+    * Layer 3 is the network layer - logically routing packets based on IP address
+    * Layer 2 is the data link layer - transmitting data frames between 2 nodes (MAC addresses) on the physical layer
+    * Layer 1 is the physical layer - transmitting raw bits over physical devices
+  * supports advanced routing based on HTTP headers
+* Network Load Balancer
+
+  * suitable for load balancing TCP traffic  - high performance
+  * operates at Layer 4
+  * capable of handling millions of requests/s with low latency
+  * most expensive
+* Classic Load Balancer
+
+  * legacy option
+  * supports some Layer 7 specific features like X-Forwarded-For headers and sticky sessions
+
+    * X-Forwarded-For header - allows you to identify the originating IP address of the client
+  * supports some  Layer 4 load balancing for applications the rely solely on TCP 
+* Gateway Load Balancer
+
+  * provides load balancing for 3rd party services like firewalls and Intrusion Detection and Prevention Systems
+* 504 Error
+
+  * Error 504 Gateway Timeout
+  * means the application (target) has failed to respond
+
+    * load balancer could not connect to the target
+    * your application is probably having issues
+    * solve the error by identifying the problem and fixing your application
+
+### RDS - Relational Database Service
 
 * <https://aws.amazon.com/rds/>
 
 ##### What it is
+
+* traditional, tabular database in the cloud
+
+  * supports Microsoft SQL Server, Oracle Database, MySQL, PostgreSQL, MariaDB, Amazon Aurora 
+  * Aurora scales automatically and is compatible with MySQL or PostgreSQL
+* can launch a relational database with multiple availability zones, failover capability, and automated backups within minutes (would normally take a week plus in traditional datacenters)
+
+##### OLTP vs OLAP
+
+* Online Transaction Processing (OLTP)
+
+  * process data from transactions in real time
+  * focused on data processing and handling a large volume of small transactions 
+  * what RDS is designed for, processing lots of small transactions
+* Online Analytics Processing (OLAP)
+
+  * process complex quieries to analyze historical data (not real time)
+  * focused on data analysis with large volumes of data and complex, long-running queries
+  * not suitable for RDS, consider using a data warehouse like RedShift
 
 ### Elasticache
 
 * <https://aws.amazon.com/elasticache/>
 
 ##### What it is
+
+* web service that makes it easy to deploy, operate, and scale an in-memory cache (key-value datastore) in the cloud
+
+  * supports Redis and Memcached
+* great for read-heavy database workloads - cache the results for faster access instead of querying the database
+* useful for storing session data
+* Memcached
+
+  * great for basic object caching, simple usecases
+  * scales horizontally, but no: persistence, mutli-AZ, or failover
+* Redis
+
+  * supports sophisticated caching: sorting and ranking data; complex datatypes like lists and hashes
+  * includes enterprise features like persistence, replication, mutli-AZ, and failover
+
+##### When to use an in-memory cache
+
+* good choice for read heavy data that doesn't change often
+* not a good choice for heavy write loads
+* not a good choice for OLAP usecases
