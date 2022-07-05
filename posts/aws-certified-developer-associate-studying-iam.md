@@ -1,8 +1,8 @@
 ---
-title: " AWS Certified Developer Associate studying -  IAM"
+title: DVA-C01 studying -  IAM
 date: 2022-07-05T05:10:05.420Z
 author: Rohan
-summary: "DVA-C01 studying - IAM "
+summary: "studying for the AWS Certified Developer Associate exam - IAM "
 tags:
   - DVA-C01
   - software-dev
