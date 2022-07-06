@@ -156,13 +156,47 @@ tags:
 * <https://aws.amazon.com/cloudfront/>
 * content delivery network (<https://www.cloudflare.com/learning/cdn/what-is-a-cdn/>)
 * easy, cost efficient way to distribute content with low latency and high data transfer speeds
+* can deliver your entire website
+* 200+ global edge locations
+* requests are automatically routed to the nearest edge location
+* optimized to work with AWS services but can work seamlessly with a non-AWS origin server (which stores your originals)
+* objects in it are cached for a period of time
+
+  * called Time to Live
+  * default TTL is 1 day
+  * objects are automatically cleared after their TTL
+  * costs money to clear an object from the cache before TTL
 
 ##### Terminology 
 
 * edge location - where the content is being cached
 
-  * can be written to
+  * not read only, supports writes (PUTs)
   * separate to an AWS Region or AZ
-* origin - where all the files on the CDN will originally be distributed from
+  * users can access edge locations instead of having to access origin each time they make a request
+* origin - where all the files on the CDN will originate from
 
-  * orgins can be S3 bucket, EC2 Instance,
+  * origins can be S3 bucket, EC2 Instance, an Elastic Load Balancer, Route53, etc.
+* distribution - name given to the origin and configuration settings
+* web distribution - typically used for websites
+
+  * HTTP/HTTPS
+* RTMP - typically used for media streaming
+
+  * stands for Adobe Real Time Messaging Protocol
+
+##### S3 Transfer Acceleration
+
+* enables fast, easy, and secure transfers of data between users and an S3 bucket
+* as data arrives at an edge location, it gets routed to the relevant Amazon S3 bucket
+
+  * optimizes the network path between the two
+
+##### AllowedMethods
+
+* need to specify which HTTP methods your distribution will support (3 options)
+
+  * GET, HEAD (read only)
+  * GET, HEAD, OPTIONS (read only)
+  * GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE (r/w)
+* HTTP methods <https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods>
