@@ -7,7 +7,7 @@ tags:
   - DVA-C01
   - software-dev
 ---
-### versionS3 - Simple Storage Service
+### S3 - Simple Storage Service
 
 ##### What it is
 
@@ -43,6 +43,13 @@ tags:
 ###### Read-after write consistency - for PUTs of new objects
 
 ###### Eventual consistency - overwrites PUTs and DELETEs (takes time to propagate)
+
+##### Cross Origin Resource Sharing (CORS)
+
+* sharing resources between buckets
+* grant read access to your buckets and files
+* enable static website hosting in bucket settings
+* update routes to point to the correct bucket/file
 
 ##### Storage Classes
 
@@ -167,7 +174,7 @@ tags:
   * objects are automatically cleared after their TTL
   * costs money to clear an object from the cache before TTL
 
-##### Terminology 
+##### Terminology
 
 * edge location - where the content is being cached
 
