@@ -46,10 +46,9 @@ tags:
 
 ##### Cross Origin Resource Sharing (CORS)
 
-* sharing resources between buckets
+* sharing resources between services in the same origin, e.g. one bucket trying to use a file in another
 * grant read access to your buckets and files
-* enable static website hosting in bucket settings
-* update routes to point to the correct bucket/file
+* edit CORS setting in your bucket
 
 ##### Storage Classes
 
