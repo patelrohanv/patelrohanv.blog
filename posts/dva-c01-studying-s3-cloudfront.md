@@ -114,20 +114,39 @@ tags:
 * access control lists (ACLs) - define which AWS accounts/groups have access and what type of access
 
   * 3 ACLs can be attached to individual objects in a bucket
-  * applied at object level
+  * applied at object level - granular control
 * bucket policies - specific what actions are allowed or denied
 
   * applied at bucket level, not individual objects
   * policy's applied to all objects in the bucket
   * useful for groups of files that the same person or group needs to access 
-  * written in JSON
+  * written in JSON (AWS provides a policy creator tool)
 * can be configured to create access logs
 
   * logs can be written to another bucket
+  * not enabled by default
 
 ##### Encryption
 
-* server side encryption - set default encryption to encrypt all new objects being stored in a bucket
+* encryption in transit
+
+  * SSL/TLS
+  * HTTPS
+* server side encryption (encryption at rest)
+
+  * set default encryption to encrypt all new objects being stored in a bucket
+  * SSE-S3 - S3 managed keys (AES-256bit encryption)
+  * SSE-KMS - AWS Key Management Service 
+  * SSE-C - customer provided keys
+* client side encryption (encryption at rest)
+
+  * you encrypt the files yourself before you upload them
+* Enforcing server side encryption
+
+  * selecting the encryption setting in the console for your bucket
+  * bucket policy
+
+    * for example, policy to deny requests that don't include the x-amz-server-side-encryption header 
 
 ### Cloudfront
 
