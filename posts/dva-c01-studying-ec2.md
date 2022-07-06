@@ -201,6 +201,17 @@ tags:
     * your application is probably having issues
     * solve the error by identifying the problem and fixing your application
 
+
+
+### Route53
+
+* <https://aws.amazon.com/route53/>
+* highly available and scalable cloud Domain Name System (DNS) 
+
+  * <https://www.cloudflare.com/learning/dns/what-is-dns/>
+
+[](https://aws.amazon.com/route53/)
+
 ### RDS - Relational Database Service
 
 * <https://aws.amazon.com/rds/>
