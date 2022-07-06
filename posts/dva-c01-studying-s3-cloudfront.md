@@ -147,9 +147,22 @@ tags:
   * bucket policy
 
     * for example, policy to deny requests that don't include the x-amz-server-side-encryption header 
+    * another example, policy to deny requests that do not use aws:SecureTransport to enforce HTTPS/SSL
 
 ### Cloudfront
 
 ##### What it is
 
 * <https://aws.amazon.com/cloudfront/>
+* content delivery network (<https://www.cloudflare.com/learning/cdn/what-is-a-cdn/>)
+* easy, cost efficient way to distribute content with low latency and high data transfer speeds
+
+##### Terminology 
+
+* edge location - where the content is being cached
+
+  * can be written to
+  * separate to an AWS Region or AZ
+* origin - where all the files on the CDN will originally be distributed from
+
+  * orgins can be S3 bucket, EC2 Instance,
