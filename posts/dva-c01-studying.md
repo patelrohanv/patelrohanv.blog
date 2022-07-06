@@ -1,8 +1,9 @@
 ---
-title: "DVA-C01 studying - Lambda, "
+title: DVA-C01 studying - Lambda, API Gateway, Step Functions, X-Ray
 date: 2022-07-06T18:50:31.300Z
 author: rohan
-summary: "studying for the AWS Certified Developer Associate exam - "
+summary: studying for the AWS Certified Developer Associate exam - Lambda, API
+  Gateway, Step Functions, X-Ray
 tags:
   - DVA-C01
   - software-dev
