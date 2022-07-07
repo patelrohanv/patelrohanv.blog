@@ -68,6 +68,8 @@ tags:
 * you can still reference other versions of the function through aliases that reference that version
 * if you use an alias instead of $LATEST in your application, it will not change the version of function it's calling when you change the function
 
+  * need to explicitly update your alias
+
 ##### Concurrent Execution Limit
 
 * default 1,000 **per region**, afterwards you'll see rejections
@@ -202,7 +204,7 @@ tags:
 
   * automatically captures API calls
 * integrates with: java, python, go,  nodejs, ruby, and .net
-* X-Ray Agent needs to be installed on your instance or container
+* X-Ray agent/daemon needs to be installed on your instance or container
 
   * use the X-Ray SDK to instrument (configure) the data it's gathering - HTTP requests, errors, etc
   * X-Ray SDK gathers information and sends it off to X-Ray daemon that buffers it in a queue and sends them to X-Ray (the actual service) in batches 
