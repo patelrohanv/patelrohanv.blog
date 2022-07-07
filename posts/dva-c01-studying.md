@@ -111,6 +111,33 @@ tags:
 
   * can log API calls, latencies, errors, etc 
 * supports throttling
+* supports importing your own APIs
+
+  * import a definition file - OpenAPI protocol (formerly known as Swagger) 
+
+    * <https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/>
+  * can create a new or update an existing API
+  * handling legacy protocols e.g. SOAP (returns XML instead of JSON)
+
+    * configure API Gateway as a SOAP web service passthrough
+    * use API Gateway to transform XML into JSON
+
+##### Caching
+
+* when enabled, default TTL is 300s
+* caches your endpoint's response
+
+  * looks up response in the cache instead of making a new request to your application
+  * reduces number of request made to your application from API Gateway
+  * improves (reduces) latency
+
+##### Throttling
+
+* default limit for steady-state requests - 10,000 requests/second per Region
+* maximum 5,000 concurrent requests across all APIs per region
+
+  * increases on this limit can be requested through AWS support
+* Exceeding these limit returns a `429 Too Many Requests` error
 
 ### Step Functions
 
@@ -167,6 +194,7 @@ tags:
 ##### What it is
 
 * <https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html>
+* provides an end-to-end view of your overall application
 * service that collects data about requests being served by your application
 * helps developer analyze and/or debug distributed applications
 * provides a visualization of your applications components - Service Map
@@ -174,7 +202,22 @@ tags:
 
   * automatically captures API calls
 * integrates with: java, python, go,  nodejs, ruby, and .net
-* X-Ray Agent needs to be installed on your EC2 instance
+* X-Ray Agent needs to be installed on your instance or container
 
-  * configure using the X-Ray SDK
-  * X-Ray SDK gathers information and sends it off to X-Ray
+  * use the X-Ray SDK to instrument (configure) the data it's gathering - HTTP requests, errors, etc
+  * X-Ray SDK gathers information and sends it off to X-Ray daemon that buffers it in a queue and sends them to X-Ray (the actual service) in batches 
+  * both the X-Ray SDK and X-Ray daemon need to be on the system you want to connect
+* on-premise servers or EC2 instances
+
+  * install X-Ray daemon on your instance or server
+* Elastic Beanstalk
+
+  * install X-Ray daemon on the EC2 instance inside the environment
+* Elastic Container Service
+
+  * install X-Ray daemon in it's own container on your ECS cluster (not on the same container as the application)
+
+##### Annotations
+
+* annotations can be used to record additional information about requests - done during instrumenting (configuring)
+* key-value pairs that are indexed - allows for filtering and searching
