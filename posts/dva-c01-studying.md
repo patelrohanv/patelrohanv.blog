@@ -13,6 +13,21 @@ tags:
 ##### What it is
 
 * <https://aws.amazon.com/serverless/>
+* allows you to run application code on the cloud without needing to manage a server
+* AWS handles managing the infrastructure
+
+  * capacity provisioning
+  * patching
+  * auto scaling
+  * high availability
+* Advantages
+
+  * speed to market - no server management overhead
+  * automatic scaling
+  * lower costs 
+
+    * never need to pay for over-provisioning
+    * event driven so you only get charged when the code is triggered to run
 
 ### Lambda
 
