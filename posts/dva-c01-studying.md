@@ -68,6 +68,8 @@ tags:
 * you can still reference other versions of the function through aliases that reference that version
 * if you use an alias instead of $LATEST in your application, it will not change the version of function it's calling when you change the function
 
+  * need to explicitly update your alias
+
 ##### Concurrent Execution Limit
 
 * default 1,000 **per region**, afterwards you'll see rejections
