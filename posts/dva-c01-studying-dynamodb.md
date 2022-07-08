@@ -61,4 +61,57 @@ tags:
 * can create IAM roles, enabling temporary access to DynamoDB
 * restricting access to only the user's own records - IAM condition 
 
-  * done by adding a condition to an IAM Policy, `dynamodb:LeadingKeys `
+  * done by adding a condition to an IAM Policy, `dynamodb:LeadingKeys`
+
+##### Indexes
+
+* secondary index 
+
+  * allows performing more flexible querying based on an attribute that is not the primary key
+  * allows for fast queries on specific columns instead of the the entire dataset - gives a different, smaller view of the data
+  * uses global secondary indexes and local secondary instances
+  * local secondary index
+
+    * can only be done when you are creating a table and it has the same partition key as your original table but a different sort key - allows for faster queries on this smaller view of the data
+    * can only be created when you create the table, can't be added, removed, or modified after
+  * global secondary index
+
+    * can be craeated ad-hoc or when you create the table
+    * uses a different partition and sort key - results in an entirely different smaller view of the data
+    * still allows for faster queries using the alternative partition and sort key
+
+##### Querying data
+
+* Query API - finds items in a table based on the primary key and a distinct value to search for 
+
+  * can use an optional sort key name to narrow down results
+  * by default returns all the attributes for the items you select
+
+    * `ProjectExpression` can be used to only get specific attributes 
+  * always sorted by sort key
+
+    * defaults to ascending order
+    * `ScanIndexForward` - can be used to reverse the sorted order (only relates to queries)
+  * all queries are eventually consistent - can be explicitly be set to strongly consistent
+* Scans - examines every item in the table
+
+  * by default, returns all data attributes
+
+    * `ProjectExpression` can be used to only get specific attributes 
+  * results can be filtered after being run
+* comparing queries and scans
+
+  * querying is more efficient than scanning
+
+    * scans dump the entire table and then filters it - as the table grows the longer this takes
+    * a scan on a large table can use up the provisioned throughput for a large table in just a single operation
+* improving performance (query and scans)
+
+  * setting a smaller page size
+  * running more smaller operates helps mitigate throttling
+  * in general avoid using scans - design tables to favor: Query API, Get API, or BatchGetItem API
+  * scans are sequential by default, can be parallelized
+
+    * logically divides the table into segments and scans each segment in parallel
+    * avoid parallel scans if your table's already under heavy read/write from other applications
+  * isolate scans to specific tables and segregate them from mission-critical traffic
