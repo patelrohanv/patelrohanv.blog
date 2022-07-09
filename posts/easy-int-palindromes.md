@@ -2,7 +2,7 @@
 title: "easy: int palindromes "
 date: 2022-07-09T16:29:32.741Z
 author: rohan
-summary: checking if an integer's a palindrome
+summary: checking if an integer's a palindrome (python)
 tags:
   - software-dev
   - practice-problems
@@ -13,7 +13,7 @@ Given an integer `x`, return `true` if `x` is palindrome integer.
 
 An integer is a **palindrome** when it reads the same backward as forward.
 
-using strings
+##### using strings
 
 ```python
 num = str(x)
@@ -32,7 +32,7 @@ while head < tail:
 return True
 ```
 
-without using strings
+##### without using strings
 
 ```python
 # return false if negative
