@@ -44,3 +44,25 @@ return not stack
 ```
 
 ##### using a stack and map
+
+```python
+stack = []
+bracketMap = {')': '(', ']': '[', '}': '{'}
+
+for _, v in enumerate(s):
+    # return False if the char is a closing bracket and the list is empty
+    if v in bracketMap and not stack:
+        return False
+    # if open bracket, add to stack
+    elif v not in bracketMap:
+        stack.append(v)
+    # if ) and the top of the stack is (, pop
+    elif stack[-1] == bracketMap[v]:
+        stack.pop()
+    # otherwise return false
+    else:
+        return False
+
+# safeguard against s being all open brackets
+return not stack
+```
