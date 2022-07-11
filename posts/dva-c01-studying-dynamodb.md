@@ -137,3 +137,72 @@ tags:
   * write capacity - 1 x 1KB write/s 
   * read capacity - 1 x strongly consistent 4KB read/s OR  2 x eventually consistent 4KB read/s (default)
 * larger reads/writes = consuming more capacity units = more cost
+
+###### ProvsionedThroughputExceededException
+
+* exception thrown when your request rate too high for the provisioned read/write capacity on your table
+
+  * can happen to a variety of AWS services, not just DynamoDB
+* if you're using the AWS SDK, it will automatically retry the requests till it succeeds
+* if not:
+
+  * reduce your request frequency
+  * implement exponential backoff
+* exponential backoff - using progressively longer waits between consecutive retries to improve flow control (already implemented in every AWS SDK)
+
+##### On Demand Capacity
+
+* pricing model for dynamoDB
+* DynamoDB instantly scales up or down based on activity
+* benefits:
+
+  * unknown workloads
+  * unpredictable traffic
+  * applications with spiky, short-lived peaks
+  * great for usecases where it makes sense to have a pay per request model
+* downsides - unpredictable costs 
+
+##### Provisioned Capacity
+
+* pricing model for dynamoDB
+* benefits:
+
+  * read/write capacity can be forecasted
+  * predictable application traffic (consistent or gradually increasing)
+  * control over cost
+
+##### DynamoDB Accelerator (DAX)
+
+* fully managed, clustered, in-memory cache for DynamoDB
+* up to 10x read performance (not write) improvement
+
+  * microsecond performance
+* ideal for ready heavy workloads - gaming, auctions, retail, etc
+* write-through caching service
+
+  * data is written to the cache and backend store (DynamoDB) at the same time
+  * allows for API calls to point to the cache instead of the store
+
+    * cache hit returns the result
+    * cache miss results in an eventually consistent `GetItem` from the cluster to the store
+* reduces read load on DynamoDB
+
+  * could potentially let you reduce the provisioned read capacity on your table
+* not suitable for 
+
+  * usecases requiring strongly consistent reads; only suitable for eventually consistent reads
+  * predominantly write-heavy applications
+  * applications that don't perform a high volume of reads
+  * usescases that don't requirequire a microsecond response time
+
+##### DynamoDB Streams
+
+* time ordered sequence of item level modifications (insert, update, delete)
+* written to logs, encrypted at rest, and stored for 24hrs
+* usecases:
+
+  * can be used for auditing or transaction archieves
+  * can be used to replay transactions to a different table
+  * can be used as an eventsource to trigger other services (like lamdba)
+* dedicated endpoint separate from the main table
+* by default primary key is recorded - can also store before and after images (state of an item before and after a change)
