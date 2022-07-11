@@ -27,7 +27,7 @@ tags:
 
   * tracks association between user identity and the different devices it signed in from 
   * uses Push Synchronization to push updates and synchronize user data across mulitple devices
-  * (under the hood) sends an SNS silent notification to all the devices associated with the user identity whenever data stored in the cloud changes 
+  * (under the hood) sends an SNS silent push notification to all the devices associated with the user identity whenever data stored in the cloud changes 
 * recommended for all mobile applications that use AWS services
 * secure - no need for applications to embed or store AWS credentials locally
 * User Pools - user directories used to managed sign-up, sign-in 
