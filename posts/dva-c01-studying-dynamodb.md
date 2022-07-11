@@ -115,3 +115,18 @@ tags:
     * logically divides the table into segments and scans each segment in parallel
     * avoid parallel scans if your table's already under heavy read/write from other applications
   * isolate scans to specific tables and segregate them from mission-critical traffic
+
+##### API Calls
+
+* CLI commands make calls to the DynamoDB API
+* user must have the correct IAM permissions to run the commands
+
+###### Common Commands
+
+* `describe-table` - returns information about the table (status, creation date, primary key, indexes, etc)
+* `scan` - reads and returns every item and it's attribtues in a table; use a FilterExpression to trim it down
+* `query` - queries a table based on a partition key
+* `delete-item` - deletes an item based on the primary key
+* `de`lete-table - deletes a table 
+
+##### Provisioned Throughput
