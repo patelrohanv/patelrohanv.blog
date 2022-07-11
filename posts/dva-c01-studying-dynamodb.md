@@ -130,3 +130,10 @@ tags:
 * `de`lete-table - deletes a table 
 
 ##### Provisioned Throughput
+
+* measured in capacity units
+
+  * read capacity units and write capacity units can be specified when you create the table
+  * write capacity - 1 x 1KB write/s 
+  * read capacity - 1 x strongly consistent 4KB read/s OR  2 x eventually consistent 4KB read/s (default)
+* larger reads/writes = consuming more capacity units = more cost
