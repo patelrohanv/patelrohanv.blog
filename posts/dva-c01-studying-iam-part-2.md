@@ -39,8 +39,41 @@ tags:
 
 ##### Inline Policies
 
-##### Managed Policies
+* managed by you
+* embedded in a single user, group, or role (one-to-one relationship)
+
+  * deleting the user, group, or role deletes the policy
+* managed policies recommended over inline policies
+
+  * inline policies are useful for tight controls
+
+##### AWS Managed Policies
+
+* IAM policy created and managed by AWS 
+* allows you to assign permissions without having to create your own policy
+
+  * cannot be changed or modified 
+* can be applied to multiple users, groups, and/or roles
 
 ##### Customer Managed Policies
 
+* standalone policy created and managed by you
+* can be attached to multiple users, groups, and/or roles (limited to those within your organization)
+* reccommended when AWS Managed Policies don't meet your needs
+
 ##### STS AssumeRoleWithWebIdentity
+
+* is an STS (security token service) API call
+
+  * `assume-role-with-web-itentity`
+* returns temporary security credentials for users authenicated by mobile application, web application, or web ID provider
+
+  * Cognito is reccommended over this for mobile applications
+* process
+
+  1. user signs into web ID provider
+  2. provider returns a JWT token
+  3. `assume-role-with-web-itentity` call is made with the JWT token to STS
+  4. STS returns temporary AWS credentials to the user
+  5. use can access AWS resources 
+* within `AssumedRoleUser`, the `Arn` and `AssumedRoleID` are used to programmatically reference the temporary credentials, not an IAM role or user
