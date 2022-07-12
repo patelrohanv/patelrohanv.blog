@@ -84,18 +84,85 @@ tags:
 ##### What it is
 
 * <https://aws.amazon.com/sns/>[](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/sqs/)
+* web service to setup up, operate, and send push notifications from the cloud
+
+  * messages sent can immediately be delivered to subscribers or other applications
+* can send push notifications to a Apple, Google, Android, Windows, and other devices 
+* can send SMS or email or send to SQS queues or HTTP endpoints 
+* can trigger Lambda function 
+* uses a pub-sub model
+
+  * https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern
+  * applications publish/push messages to a topic; subscribers recieve message from the topic
+* topic - a logical access point that acts as a communication channel for recipients to subscribe to and recieve identical copies o the same notification
+* includes durable storage - prevents messages from being lost
+
+  * all messages published to SNS are stored redundantly across multiple AZ
+
+###### Pros
+
+* pay-as-you-go pricing model; no up-front costs
+* easy to configure from AWS management console
+* scalable and highly available
+* managed service with durable storage
+* supports multiple transport protocols - SMS, HTTP, SQS, email, etc
+* can trigger lambda functions
+* instantaneous, push notifications (no polling)
+* can fannout messages to a large number of recipients
 
 ### SES - Simple Email Service
 
 ##### What it is
 
 * [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/ses/>
+* scalable, highly available email service
+* pay-as-you-go model
+* can be used to send emails or recieve them to an S3 bucket
+* incoming emails can trigger Lambda functions and SNS notifications
+* useful for automated emails -  changes in a post/group/forumn, purchase confirmations, order status and shipping updates, marketing/promotions
+* differences from SNS
 
-### Kinesis - 
+  * only email
+  * can trigger Lamdba functions or SNS notifications (as opposed to just Lamdba functions)
+  * supports incoming and outgoing email (SNS is push only)
+  * only requires knowing the email address to get started - not subscription based 
+
+### Kinesis 
 
 ##### What it is
 
 * [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/kinesis/>
+* family of services that let you collect, process, and analyze streaming data in real-time and make decisions off them
+
+  * streaming data - small sized (in the kilobytes) data generated continuously and simulatanously by many data sources 
+* Kinesis Streams
+
+  ###### Kinesis Data Streams
+
+  * data comes from producers; data is sent to Kinesis Streams; data is stored in shards (sequence of data  records); data in shards consumed by consumers 
+
+    * shards retain data for 24hrs (default) up to 7 days 
+  * Kinesis Shards
+
+    * only apply to Kinesis Streams
+    * each shard is a sequence of one or more data records
+    * provides a fixed unit of capacity - Stream's capacity is determined by number of shards it has
+
+      * 5 reads/s; max total read rate is 2MB/s
+      * 1000 writes/s; max total write rate is 1MB/s
+    * can increase a Stream's capacity by increasing the number of shards
+
+    ###### Kinesis Video Streams
+
+    * securely stream video from connectect devices to AWS 
+* Kinesis Data Firehose
+
+  * capture, transform, and load data streams into AWS data stores
+  * allows for near-real-time analytics
+* Kinesis Data Analytics
+
+  * analyze, query, and transform streamed data (in real-time); storing results in an AWS data store
+  * uses standard SQL
 
 ### ElasticBeanstalk - 
 
