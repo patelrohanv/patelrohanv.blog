@@ -37,13 +37,16 @@ tags:
   * ^minus these, same capabalities as a standard queue 
   * good usecase - banking 
 
-##### Useful Settings
+##### Visibility Timeout (configuration) 
 
-* visibility timeout - the amount of time a message is invisible in the queue after a reader reads the message for processing
+* the amount of time a message is invisible in the queue after a reader reads the message for processing
 
   * if the job is not processed within that time, the message will become visible again for another reader to read 
   * default is 30sec - need to increase if your task will take longer
   * maximum is 12hrs
+
+##### Polling
+
 * Short Polling
 
   * returns a response immediately even if the message queue being polled is empty
@@ -54,6 +57,13 @@ tags:
   * periodically polls the queue 
   * doesn't return a response until a message arrives in the queue or the long poll times out 
   * **generally prefereable to short polling** - also saves money
+
+##### Delay Queues (configuration)
+
+* postpone the delivery of new messages (setting change)
+
+  * does not affect the delay of messages already in the queue, only new ones - standard queues
+  * does affect the delay of messages already in the queue - FIFO queues
 
 ### SNS - Simple Notification Service
 
