@@ -25,16 +25,16 @@ tags:
 
 * standard queues (default)
 
-  * best-effort ordering - messages are generally delivered in the order they were sent but will occasionally be delievered out of order or more than one copy of the message will be delievered
+  * best-effort ordering - messages are generally delivered in the order they were sent but will occasionally be delivered out of order or more than one copy of the message will be delievered
   * nearly unlimited number of transactions per second
-  * guarantees that a message is delievered at least once
+  * guarantees that a message is delivered at least once
 * FIFO queues (first in first out)
 
-  * ordering is strictly preserved - messages delievered in the order they were sent
+  * ordering is strictly preserved - messages delivered in the order they were sent
   * no duplicate messages will ever be sent
   * exactly-once processing - message is delivered once and remains available until a consumer processes and deletes it
   * 300 transactions per second
-  * ^minus these, same capabalities as a standard queue 
+  * ^minus these, same capabilities as a standard queue 
   * good usecase - banking 
 
 ##### Visibility Timeout (configuration) 
@@ -56,7 +56,7 @@ tags:
 
   * periodically polls the queue 
   * doesn't return a response until a message arrives in the queue or the long poll times out 
-  * **generally prefereable to short polling** - also saves money
+  * **generally preferable to short polling** - also saves money
 
 ##### Delay Queues (configuration)
 
@@ -64,6 +64,18 @@ tags:
 
   * does not affect the delay of messages already in the queue, only new ones - standard queues
   * does affect the delay of messages already in the queue - FIFO queues
+* When to use:
+
+  * large, distributed applications that need a delay in processing
+  * you need to apply a delay to an entire message queue 
+
+##### managing large messages
+
+* for messages 256kb up to 2GB in size
+* use S3 to store the messages
+* use `Amazon SQS Extended Client Library` to manage and the `AWS SDK` for S3 and object operations
+
+  *
 
 ### SNS - Simple Notification Service
 
