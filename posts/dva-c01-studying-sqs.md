@@ -64,6 +64,7 @@ tags:
 
   * does not affect the delay of messages already in the queue, only new ones - standard queues
   * does affect the delay of messages already in the queue - FIFO queues
+* messages in the Delay Queue remain invisible for the delay period (0-900sec)
 * When to use:
 
   * large, distributed applications that need a delay in processing
@@ -75,7 +76,8 @@ tags:
 * use S3 to store the messages
 * use `Amazon SQS Extended Client Library` to manage and the `AWS SDK` for S3 and object operations
 
-  *
+  * AWS docs default to Java for the library and SDK
+  * cannot use `AWS CLI`, `AWS Management Console`, `SQS Console`, `SQS API`
 
 ### SNS - Simple Notification Service
 
