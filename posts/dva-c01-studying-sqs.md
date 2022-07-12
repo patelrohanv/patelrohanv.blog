@@ -140,7 +140,6 @@ tags:
 * Kinesis Streams
 
   ###### Kinesis Data Streams
-
   * data comes from producers; data is sent to Kinesis Streams; data is stored in shards (sequence of data  records); data in shards consumed by consumers 
 
     * shards retain data for 24hrs (default) up to 7 days 
@@ -154,9 +153,8 @@ tags:
       * 1000 writes/s; max total write rate is 1MB/s
     * can increase a Stream's capacity by increasing the number of shards
 
-    ###### Kinesis Video Streams
-
-    * securely stream video from connectect devices to AWS 
+  ###### Kinesis Video Streams
+    * securely stream video from connected devices to AWS 
 * Kinesis Data Firehose
 
   * capture, transform, and load data streams into AWS data stores
