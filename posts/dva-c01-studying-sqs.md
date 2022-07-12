@@ -25,7 +25,56 @@ tags:
 
 * standard queues (default)
 
-  * best-effort ordering
+  * best-effort ordering - messages are generally delivered in the order they were sent but will occasionally be delievered out of order or more than one copy of the message will be delievered
+  * nearly unlimited number of transactions per second
+  * guarantees that a message is delievered at least once
 * FIFO queues (first in first out)
 
-  * ordering is strictly preserved
+  * ordering is strictly preserved - messages delievered in the order they were sent
+  * no duplicate messages will ever be sent
+  * exactly-once processing - message is delivered once and remains available until a consumer processes and deletes it
+  * 300 transactions per second
+  * ^minus these, same capabalities as a standard queue 
+  * good usecase - banking 
+
+##### Useful Settings
+
+* visibility timeout - the amount of time a message is invisible in the queue after a reader reads the message for processing
+
+  * if the job is not processed within that time, the message will become visible again for another reader to read 
+  * default is 30sec - need to increase if your task will take longer
+  * maximum is 12hrs
+* Short Polling
+
+  * returns a response immediately even if the message queue being polled is empty
+  * can result in a lot of empty responses
+  * pay per response (even empty ones)
+* Long Polling
+
+  * periodically polls the queue 
+  * doesn't return a response until a message arrives in the queue or the long poll times out 
+  * **generally prefereable to short polling** - also saves money
+
+### SNS - Simple Notification Service
+
+##### What it is
+
+* <https://aws.amazon.com/sns/>[](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/sqs/)
+
+### SES - Simple Email Service
+
+##### What it is
+
+* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/ses/>
+
+### Kinesis - 
+
+##### What it is
+
+* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/kinesis/>
+
+### ElasticBeanstalk - 
+
+##### What it is
+
+* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/kinesis/)<https://aws.amazon.com/elasticbeanstalk/>
