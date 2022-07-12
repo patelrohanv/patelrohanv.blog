@@ -1,8 +1,10 @@
 ---
-title: DVA-C01 studying - SQS
+title: DVA-C01 studying - SQS, SNS, SES, Kinesis, Elastic Beanstalk
 date: 2022-07-12T17:52:58.344Z
 author: rohan
-summary: studying for the AWS Certified Developer Associate exam - Simple Queue Service
+summary: studying for the AWS Certified Developer Associate exam - Simple Queue
+  Service, Simple Notification Service, Simple Email Service, Kinesis, Elastic
+  Beanstalk
 tags:
   - DVA-C01
   - software-dev
