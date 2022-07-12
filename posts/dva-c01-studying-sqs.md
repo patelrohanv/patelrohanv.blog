@@ -39,7 +39,7 @@ tags:
   * ^minus these, same capabilities as a standard queue 
   * good usecase - banking 
 
-##### Visibility Timeout (configuration) 
+##### Visibility Timeout (configuration)
 
 * the amount of time a message is invisible in the queue after a reader reads the message for processing
 
@@ -129,7 +129,7 @@ tags:
   * supports incoming and outgoing email (SNS is push only)
   * only requires knowing the email address to get started - not subscription based 
 
-### Kinesis 
+### Kinesis
 
 ##### What it is
 
@@ -140,6 +140,7 @@ tags:
 * Kinesis Streams
 
   ###### Kinesis Data Streams
+
   * data comes from producers; data is sent to Kinesis Streams; data is stored in shards (sequence of data  records); data in shards consumed by consumers 
 
     * shards retain data for 24hrs (default) up to 7 days 
@@ -154,17 +155,20 @@ tags:
     * can increase a Stream's capacity by increasing the number of shards
 
   ###### Kinesis Video Streams
-    * securely stream video from connected devices to AWS 
+
+  * securely stream video from connected devices to AWS 
 * Kinesis Data Firehose
 
   * capture, transform, and load data streams into AWS data stores
   * allows for near-real-time analytics
+  * no shards (no data retention)
+  * data comes from producers; data is sent to Kinesis Firehose; 
 * Kinesis Data Analytics
 
   * analyze, query, and transform streamed data (in real-time); storing results in an AWS data store
   * uses standard SQL
 
-### ElasticBeanstalk - 
+### ElasticBeanstalk -
 
 ##### What it is
 
