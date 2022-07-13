@@ -165,4 +165,5 @@ Continuous deployment - fully automated release process to staging or prod after
 
 * stacks that create other stacks - enables re-using CloudFormation code
 
-  * standard configurations - load balancers, web servers, application servers
+  * one Cloudformation template referencing another (the one referencing uses the `Stack` resource type in it's template's `Resources` section)
+  * useful for frequently used configurations - load balancers, web servers, application servers
