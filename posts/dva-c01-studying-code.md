@@ -91,6 +91,16 @@ Continuous deployment - fully automated release process to staging or prod after
 ##### What it is
 
 * <https://aws.amazon.com/codeartifact/>
+* artifact (software package) repository service
+
+  * artifacts contain documentation, compiled application code, deployable packages, libraries
+* securely store, publish, and share artifacts (and versions) - compiled from in-house or open source code repositories
+* integrates with public repositories e.g. npm, pypi, maven
+
+  * allows IT to make **approved** versions of packages available 
+  * aws\[repository <-> upstream repo] \[<-> public repo]external
+  * my-app <-> my-npm-store <-> npm registry
+* integrates with CI/CD system
 
 ### Elastic Container Service
 
