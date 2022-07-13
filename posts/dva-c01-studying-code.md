@@ -81,15 +81,22 @@ Continuous deployment - fully automated release process to staging or prod after
 ##### What it is
 
 * <https://aws.amazon.com/codepipeline/>
-* mananages the end-to-end workflow
+* fully managed CI/CD service - automated orchestratration of the end-to-end workflow from push to release
 
   * code change -> build -> test -> package -> deploy
+* integrates with many AWS and 3rd party services
 
 ### CodeArtifact
 
 ##### What it is
 
 * <https://aws.amazon.com/codeartifact/>
+
+### Elastic Container Service
+
+##### What it is
+
+* <https://aws.amazon.com/ecs/>
 
 ### CloudFormation
 
