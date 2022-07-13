@@ -171,7 +171,7 @@ tags:
   * **uses standard SQL**
   * data comes from producers; data is sent to Kinesis Firehose or Kinesis Data Streams; Kinesis Data Analytics runs SQL on data; data stored in AWS data stores
 
-###### Consumers 
+###### Consumers
 
 * Kinesis Client Library runs on the consumer instance
 
@@ -278,4 +278,7 @@ tags:
   * need to add a security group to your environment's Auto Scaling group
   * need to provide connection string information to your application servers (using Elastic Beanstalk environment properties)
 
-##### Migrating to Elastic Beanstalk
+##### Windows Web Application Migration Assistant
+
+* formerly known as .NET Migration Assistant
+* interactive powershell utility - enables migrating a .NET application or entire website from Windows servers to Elastic Beanstalk
