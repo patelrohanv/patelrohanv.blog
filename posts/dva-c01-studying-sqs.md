@@ -27,7 +27,7 @@ tags:
 
 * standard queues (default)
 
-  * best-effort ordering - messages are generally delivered in the order they were sent but will occasionally be delivered out of order or more than one copy of the message will be delievered
+  * best-effort ordering - messages are generally delivered in the order they were sent but will occasionally be delivered out of order or more than one copy of the message will be delivered
   * nearly unlimited number of transactions per second
   * guarantees that a message is delivered at least once
 * FIFO queues (first in first out)
@@ -152,24 +152,54 @@ tags:
 
       * 5 reads/s; max total read rate is 2MB/s
       * 1000 writes/s; max total write rate is 1MB/s
-    * can increase a Stream's capacity by increasing the number of shards
+    * can increase a Stream's capacity by increasing the number of shards (called resharding)
 
   ###### Kinesis Video Streams
 
-  * securely stream video from connected devices to AWS 
+  * securely stream video (used for analytics or ML) from connected devices to AWS 
 * Kinesis Data Firehose
 
   * capture, transform, and load data streams into AWS data stores
   * allows for near-real-time analytics
-  * no shards (no data retention)
-  * data comes from producers; data is sent to Kinesis Firehose; 
+  * no shards (no data retention) - all capacity and sizing is automated for you
+  * no need for consumers to consume data
+  * no BI tools
+  * data comes from producers; data is sent to Kinesis Firehose; Firehose stores transformed data in AWS data stores
 * Kinesis Data Analytics
 
-  * analyze, query, and transform streamed data (in real-time); storing results in an AWS data store
-  * uses standard SQL
+  * analyze, query, and transform streamed data (**in real-time**); storing results in an AWS data store
+  * **uses standard SQL**
+  * data comes from producers; data is sent to Kinesis Firehose or Kinesis Data Streams; Kinesis Data Analytics runs SQL on data; data stored in AWS data stores
+
+###### Consumers 
+
+* Kinesis Client Library runs on the consumer instance
+
+  * tracks the number of shards in your system
+  * discovers new shards after resharding
+  * ensures that for every shard, there is a record processor
+  * manages the number of record processors relative to the number of shards and consumers
+
+    * will load balance if you have multiple consumers
+* generally number of consumer instances should not be higher than the number of shards 
+
+  * exceptions being failure or standby purposes
+* you never need multiple consumers to handle the processing load one shard; one consumer can process multiple shards
+
+  * CPU utilization should be the metric for increasing/decreasing your consumer quantity - best practice use an Auto Scaling group based on CPU load
 
 ### ElasticBeanstalk -
 
 ##### What it is
 
 * [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/kinesis/)<https://aws.amazon.com/elasticbeanstalk/>
+* service to deploy and scale applications
+
+  * supports go, ruby, node, java, .net, and php
+  * supports tomcat and docker
+  * allows developers to deploy code without worrying about the underlying infrastructure 
+* handles
+
+  * infrastructure - provisioning, load balancing, scaling, health monitoring
+  * application platform - installing and managing the stack, 
+* gives you complete administrative control
