@@ -115,7 +115,7 @@ Continuous deployment - fully automated release process to staging or prod after
 * allows for quickly deployment  and scale containerized workloads
 * ECS will run your containers on clusters of virtual machines
 
-* EC2 provides more control over the installation, configuration, and managment of the compute environment relative to ECS or Fargate
+* EC2 provides more control over the installation, configuration, and management of the compute environment relative to Fargate
 
 ###### Fargate
 
@@ -126,6 +126,7 @@ Continuous deployment - fully automated release process to staging or prod after
 
 * <https://aws.amazon.com/ecr/>
 * image registry service
+* store built images - Docker or Windows Container
 
 ### CloudFormation
 
