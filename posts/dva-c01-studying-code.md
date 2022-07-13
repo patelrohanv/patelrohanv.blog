@@ -71,6 +71,11 @@ Continuous deployment - fully automated release process to staging or prod after
 
 ##### Lifecycle Event Hooks
 
+* Run Order - order life cycle hooks are run
+* In-Place deployment run order - <https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-server>
+
+  * broadly 3 phases: de-registering with load balancer; installing; re-registering
+
 ### CodePipeline
 
 ##### What it is
