@@ -114,7 +114,6 @@ Continuous deployment - fully automated release process to staging or prod after
 * supports docker or windows containers
 * allows for quickly deployment  and scale containerized workloads
 * ECS will run your containers on clusters of virtual machines
-
 * EC2 provides more control over the installation, configuration, and management of the compute environment relative to Fargate
 
 ###### Fargate
@@ -133,3 +132,15 @@ Continuous deployment - fully automated release process to staging or prod after
 ##### What it is
 
 * <https://aws.amazon.com/cloudformation/>
+* manage, configure, and provision your AWS infrastructure as code
+
+  * done with a CloudFormation template (YAML or JSON)
+* benefits
+
+  * infrastructure is provisioned consistently 
+  * code is more efficient than manual configuration
+  * version control - file can be reviewed by others with access to the repo
+  * free to use - you will be charged for AWS resources created by CloudFormation
+  * can manage updates and dependencies
+  * can roll back to a previous state 
+* write CloudFormation template -> upload to S3 bucket -> CloudFormation reads the template in the bucket and makes the relevant API calls -> result is called a "stack" (the set of resources CloudFormation builds from the template)
