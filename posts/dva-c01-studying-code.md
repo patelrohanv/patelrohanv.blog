@@ -1,8 +1,11 @@
 ---
-title: DVA-C01 studying - Code
+title: DVA-C01 studying - CodeCommit, CodeBuild, CodeDeploy, CodePipeline,
+  CodeArtifact, ECS, CloudFormation
 date: 2022-07-13T21:14:28.019Z
 author: rohan
-summary: "studying for the AWS Certified Developer Associate exam - "
+summary: studying for the AWS Certified Developer Associate exam - CodeCommit,
+  CodeBuild, CodeDeploy, CodePipeline, CodeArtifact, Elastic Container Service,
+  CloudFormation
 tags:
   - DVA-C01
   - software-dev
