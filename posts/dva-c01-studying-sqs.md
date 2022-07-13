@@ -266,7 +266,7 @@ tags:
 * launch RDS within Elastic Beanstalk
 
   * launch RDS instance from Elastic Beanstalk console
-  * RDS is created within the Elastic Beanstalk enviroment
+  * RDS is created within the Elastic Beanstalk environment
   * **terminating the environment terminates the database**
   * useful for dev/testing - inflexible 
   * no need to configure security groups
