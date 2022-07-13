@@ -282,3 +282,15 @@ tags:
 
 * formerly known as .NET Migration Assistant
 * interactive powershell utility - enables migrating a .NET application or entire website from Windows servers to Elastic Beanstalk
+
+##### Deploying Docker Containers using Elastic Beanstalk
+
+* can deploy a Docker container to a single EC2 instance
+* can deploy multiple Docker instances to an ECS cluster
+* to deploy a Docker application, upload your code bundle to Elastic Beanstalk
+
+  * code can be uploaded from local or an S3 bucket
+* upgrading - use console to upload your code and deploy a new version
+
+  * Elastic Beanstalk will also manange old versions
+* if using CodeCommit to store your code, you must use the Elastic Beanstalk CLI (out of scope for exam)
