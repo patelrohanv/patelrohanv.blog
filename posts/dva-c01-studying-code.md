@@ -135,6 +135,13 @@ Continuous deployment - fully automated release process to staging or prod after
 * manage, configure, and provision your AWS infrastructure as code
 
   * done with a CloudFormation template (YAML or JSON)
+* template
+
+  * parameters - allows you to input custom values
+  * conditions - make decisions based on parameters
+  * resources - mandatory section; the resources CloudFormation will create
+  * mappings - custom mappings
+  * transform - allows you to reference code in S3
 * benefits
 
   * infrastructure is provisioned consistently 
@@ -144,3 +151,18 @@ Continuous deployment - fully automated release process to staging or prod after
   * can manage updates and dependencies
   * can roll back to a previous state 
 * write CloudFormation template -> upload to S3 bucket -> CloudFormation reads the template in the bucket and makes the relevant API calls -> result is called a "stack" (the set of resources CloudFormation builds from the template)
+
+###### Serverless Application Model (SAM)
+
+* extension for CloudFormation to define Serverless applications
+* uses simplified syntax for definining serverless resources
+* SAM CLI used for packaging your deployment code, uploading it to S3, and deploying 
+
+  * `sam package` - packages for application and uploads to S3
+  * `sam deploy` - deploys serverless application using CloudFormation
+
+###### Nested Stacks
+
+* stacks that create other stacks - enables re-using CloudFormation code
+
+  * standard configurations - load balancers, web servers, application servers
