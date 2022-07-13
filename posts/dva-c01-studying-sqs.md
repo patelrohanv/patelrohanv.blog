@@ -1,6 +1,6 @@
 ---
 title: DVA-C01 studying - SQS, SNS, SES, Kinesis, Elastic Beanstalk
-date: 2022-07-12T17:52:58.344Z
+date: 2022-07-13T21:10:23.055Z
 author: rohan
 summary: studying for the AWS Certified Developer Associate exam - Simple Queue
   Service, Simple Notification Service, Simple Email Service, Kinesis, Elastic
@@ -259,3 +259,23 @@ tags:
     * `.platform/hooks/prebuild` - files that run before building, setting up, and configuring 
     * `.platform/hooks/predeploy` - files that run after building, setting up, and configuring but before deploying
     * `.platform/hooks/postdeploy` - files that run after deploying
+
+##### RDS and Elastic Beanstalk
+
+* 2 options
+* launch RDS within Elastic Beanstalk
+
+  * launch RDS instance from Elastic Beanstalk console
+  * RDS is created within the Elastic Beanstalk enviroment
+  * **terminating the environment terminates the database**
+  * useful for dev/testing - inflexible 
+  * no need to configure security groups
+* launch RDS outside Elastic Beanstalk
+
+  * launch RDS from RDS console or AWS CLI
+  * allows for tearing down the application environment without affecting the database
+  * preferred for prod - more flexible
+  * need to add a security group to your environment's Auto Scaling group
+  * need to provide connection string information to your application servers (using Elastic Beanstalk environment properties)
+
+##### Migrating to Elastic Beanstalk
