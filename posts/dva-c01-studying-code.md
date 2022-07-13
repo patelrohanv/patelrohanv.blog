@@ -102,11 +102,30 @@ Continuous deployment - fully automated release process to staging or prod after
   * my-app <-> my-npm-store <-> npm registry
 * integrates with CI/CD system
 
-### Elastic Container Service
+### ECS - Elastic Container Service
 
 ##### What it is
 
 * <https://aws.amazon.com/ecs/>
+* fully managed container orchestration service
+* container - virtualized operating environment (not VM); standardized unit; lends nicely to microservices
+
+  * containerized microservices - highly scalable, fault tolerant, easy to maintain relative to monoliths 
+* supports docker or windows containers
+* allows for quickly deployment  and scale containerized workloads
+* ECS will run your containers on clusters of virtual machines
+
+  * EC2 provides more control over the installation, configuration, and managment of the compute environment 
+
+###### Fargate
+
+* <https://aws.amazon.com/fargate/>
+* serverless compute for containers - no need to mess with EC2
+
+###### ECR - Elastic Container Registry
+
+* <https://aws.amazon.com/ecr/>
+* image registry service
 
 ### CloudFormation
 
