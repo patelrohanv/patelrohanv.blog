@@ -13,7 +13,7 @@ tags:
 
 ##### What it is
 
-* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)<https://aws.amazon.com/sqs/>
+* <https://aws.amazon.com/sqs/>
 * distributed message queue service (temp buffer to store messages waiting to be processed) 
 
   * <https://www.youtube.com/watch?v=oUJbuFMyBDk> <- good explanation of message queues 
@@ -85,7 +85,7 @@ tags:
 
 ##### What it is
 
-* <https://aws.amazon.com/sns/>[](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/sqs/)
+* <https://aws.amazon.com/sns/>
 * web service to setup up, operate, and send push notifications from the cloud
 
   * messages sent can immediately be delivered to subscribers or other applications
@@ -116,7 +116,7 @@ tags:
 
 ##### What it is
 
-* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/ses/>
+* <https://aws.amazon.com/ses/>
 * scalable, highly available email service
 * pay-as-you-go model
 * can be used to send emails or recieve them to an S3 bucket
@@ -133,7 +133,7 @@ tags:
 
 ##### What it is
 
-* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)<https://aws.amazon.com/kinesis/>
+* <https://aws.amazon.com/kinesis/>
 * family of services that let you collect, process, and analyze streaming data in real-time and make decisions off them
 
   * streaming data - small sized (in the kilobytes) data generated continuously and simulatanously by many data sources 
@@ -192,7 +192,7 @@ tags:
 
 ##### What it is
 
-* [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/kinesis/)<https://aws.amazon.com/elasticbeanstalk/>
+* <https://aws.amazon.com/elasticbeanstalk/>
 * service to deploy and scale applications - "quickest and easiest way"
 
   * supports go, ruby, node, java, .net, and php
