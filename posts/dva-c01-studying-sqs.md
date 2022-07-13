@@ -193,13 +193,69 @@ tags:
 ##### What it is
 
 * [](https://aws.amazon.com/dynamodb/)[](https://aws.amazon.com/kms/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/ses/)[](https://aws.amazon.com/kinesis/)<https://aws.amazon.com/elasticbeanstalk/>
-* service to deploy and scale applications
+* service to deploy and scale applications - "quickest and easiest way"
 
   * supports go, ruby, node, java, .net, and php
   * supports tomcat and docker
   * allows developers to deploy code without worrying about the underlying infrastructure 
 * handles
 
-  * infrastructure - provisioning, load balancing, scaling, health monitoring
-  * application platform - installing and managing the stack, 
-* gives you complete administrative control
+  * infrastructure - provisioning AWS resources; load balancing; scaling; monitoring metrics and health (+ dashboarding)
+  * application platform - installing and managing the stack; patches/updates on the OS and applicaiton platform 
+* gives you complete administrative control over the AWS resources it creates/manages
+* no additional charges for using ElasticBeanstalk - only pay for the resources you create
+
+##### Updating Applications
+
+* All at once deployment - deploys to all hosts concurrently
+
+  * will result in a total outage (service interruption)
+  * not ideal for mission-critical production systems
+  * failure results in a rollback (another outage)
+  * useful for dev/testing
+* rolling update - deploys the new version in batches
+
+  * reduces your capacity during the update process 
+  * not ideal for performance sensitive systems
+* rolling with additional batch - launches an additional batch of instances; then deploys the new version in batches
+
+  * maintains full capacity during the update
+  * failure results in doing another rolling update to undo the changes
+* immutable - deploys new version to a fresh group of instances; then deletes the old instances
+
+  * old instances deleted when new instances pass their healthchecks
+  * if deployment fails, delete the new instances - no need to rollback changes
+  * preferred for mission-critical systems
+* traffic splitting - deploys new version to a fresh group of instances; then forwards a percentage of incoming traffic to the new version for a specified evaluation period
+
+  * similar to immut
+  * enables canary testing during deployments
+
+##### Customizing Elastic Beanstalk environment
+
+* Amazon Linux 1 - configuration files (old way but still supported)
+
+  * define packages to install; Linux users and groups to create; shell commands to run; services to enable; load balancer configurations
+  * YAML or JSON format
+  * file must be have a  `.config` file extension
+  * must be inside a folder named `.ebextensions` at the root level of the application's repo
+* Amazon Linux 2
+
+  * use `Buildfile`, `Procfile`, and `platform hooks` to configure 
+  * Buildfile - commands that run for a short time, then exit on completion
+
+    * Buildfile must be at root level in the application's repo
+    * <process_name>: <command> format
+    * e.g. `make: ./build.sh` (build.sh must be in the directory)
+  * Procfile - long running application processes (continuously running)
+
+    * Procfile must be at root level in the application's repo
+    * <process_name>: <command> format
+    * e.g. `app: bin/app` (bin must be in the directory, app must be in bin)
+    * Elastic Beanstalk monitors and restarted terminated processes 
+  * platform hooks - custom scripts or executable files that run at specified stages in the EC2 provisioning process
+
+    * stored in dedicated folders in the application's repo
+    * `.platform/hooks/prebuild` - files that run before building, setting up, and configuring 
+    * `.platform/hooks/predeploy` - files that run after building, setting up, and configuring but before deploying
+    * `.platform/hooks/postdeploy` - files that run after deploying
