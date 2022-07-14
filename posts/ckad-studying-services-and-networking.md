@@ -10,9 +10,18 @@ tags:
 ---
 ### NetworkPolicies
 
-* s
+* Pods communicate with eachother, even if on different nodes, over a virtual cluster network managed by Kubernetes
+* NetworkPolicy - Kubernetes object that lets you restrictic network traffic to/from Pods within the cluster network; granular control
 
-sample 
+  * can be used to block specific network traffic
+* non-isolated pods - any Pod not selected by any NetworkPolicies
+
+  * open to all incoming/outgoing network traffic
+* isolated pods - any Pod selected by at least 1 NetworkPolicy
+
+  * only open to network traffic allowed by the NetworkPolicy(s)
+
+sample NetworkPolicy selecting Pods with the `db` role, applies rules on incoming and outgoing traffic
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -51,6 +60,8 @@ spec:
           port: 5978
 ```
 
+* read more on network policies -> <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
+
 ### Services
 
 * s
@@ -70,6 +81,8 @@ spec:
       port: 80
       targetPort: 9376
 ```
+
+* read more on services -> <https://kubernetes.io/docs/concepts/services-networking/service/>
 
 ### Ingress
 
@@ -97,3 +110,5 @@ spec:
             port:
               number: 80
 ```
+
+* read more on ingress -> https://kubernetes.io/docs/concepts/services-networking/ingress/
