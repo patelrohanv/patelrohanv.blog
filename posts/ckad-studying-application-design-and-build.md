@@ -83,6 +83,8 @@ spec:
           restartPolicy: OnFailure
 ```
 
+^ run with `kubectl apply -f <file_name>`
+
 * `restart policy` for a Job or CronJob Pod must be `OnFailure` or `Never` - jobs are meant to run once to completion
 * `activeDeadlineSeconds` can be used in the Job spec to terminate long running jobs 
 
@@ -91,7 +93,7 @@ spec:
 * pods - group of one or more containers, with shared storage and network resources, and a specification for how to run the containers
 
   * smallest deployable units of computing that you can create and manage in Kubernetes
-* sample pod -> more documentation at <https://kubernetes.io/docs/concepts/workloads/pods/>
+* sample pod config -> more documentation at <https://kubernetes.io/docs/concepts/workloads/pods/>
 
 ```yaml
 apiVersion: v1
@@ -128,8 +130,11 @@ spec:
 ### Init Containers
 
 * init container - container that runs to complete a task before the Pod's main container starts up 
-* can use a separate image from the main container
-* can be used to delay the startup of the main container's startup until preconditions are met
+
+  * can use a separate image from the main container
+  * can be used to delay the startup of the main container's startup until preconditions are met
+  * can contribute to security, e.g. isolating start-up sets like consuming secrets from the main container
+* add init containers to a pod using `initContainers` in the Pod spec
 * sample pod specification with init containers -> more documentation at <https://kubernetes.io/docs/concepts/workloads/pods/init-containers/>
 
 ```yaml
@@ -153,4 +158,69 @@ spec:
     command: ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
 ```
 
+^ run with `kubectl apply -f <file_name>`
+
 ### Container Storage
+
+* full documentation -> <https://kubernetes.io/docs/concepts/storage/volumes/>
+* volume - provides external storage for containers outside of the container file system
+
+  * defined in the Pod spec - details of where and how the data is stored
+* volumeMounts 
+
+  * defined in the container spec - defines the path where the volume data will appear at runtime
+  * attaches the volume to a specific container 
+* volume type - defines where and how the data storage is handled
+
+  * hostPath - data is stored in a specific location directly on the host file system, on the Kubernetes node where the Pod is running
+
+    * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#hostpath>
+
+sample spec using hostPath
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data
+      # this field is optional
+      type: Directory
+```
+
+  * emptyDir - data is stored in an automatically managed location on the host file system; data is deleted if Pod is deleted (temporary storage)
+
+    * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>
+    * more reading on ephemeral volumes -> <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/>
+
+sample spec using emptyDir
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /cache
+      name: cache-volume
+  volumes:
+  - name: cache-volume
+    emptyDir: {}
+```
+  * persistentVolumeClaim - data is stored using a `PersistentVolume`
+
+    * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim>
+    * more reading on persistent volumes -> <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
