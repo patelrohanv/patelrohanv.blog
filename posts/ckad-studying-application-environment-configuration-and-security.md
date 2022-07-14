@@ -56,6 +56,7 @@ spec:
 ##### Authentication
 
 * is the user who they claim they are?
+* read more -> <https://kubernetes.io/docs/reference/access-authn-authz/authentication/>
 
 ##### Users
 
@@ -68,8 +69,37 @@ spec:
 * usually used by real humans or tools outside the cluster
 
   * as opposed to ServiceAccounts that are usually used by automated processes running inside the container
+* **both users and ServiceAccounts can recieve authorization using role-based acccess controll (RBAC)**
 
-Admission Control
+###### role-based acccess controll (RBAC)
+
+* system for managing authorization - allows for defining what users and groups have access to do within a Kubernetes cluster
+* **Role always sets permissions within a particular namespace**
+
+  * must specify a namespace when creating a role
+
+sample Role object 
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+```
+
+* read more -> <https://kubernetes.io/docs/reference/access-authn-authz/rbac/>
+
+### Admission Control
+
+* admission controller - intercept requests to the Kubernetes API after authentication and authorization but before any objects are persisted
+
+  * can be used to validate, deny, or modify requests
+* read more -> <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/>
 
 Compute Resource Management
 
