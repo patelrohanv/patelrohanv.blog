@@ -21,7 +21,7 @@ tags:
 
   * only open to network traffic allowed by the NetworkPolicy(s)
 
-sample NetworkPolicy selecting Pods with the `db` role, applies rules on incoming and outgoing traffic
+sample NetworkPolicy selecting Pods with label `role=db`, applies rules on incoming and outgoing traffic
 
 ```yaml
 apiVersion: networking.k8s.io/v1
