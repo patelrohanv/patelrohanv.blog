@@ -93,7 +93,13 @@ spec:
 ### Ingress
 
 * ingress - Kubernetes object that manages access to Services from outside the cluster
-* ingress routing
+
+  * provides more powerful featues than a NodePort service
+  * normally used in the context of cloud computing platforms
+  * you need an Ingress controller to implement the functionality on Ingress objects, by default controllers are not enabled
+* ingress routing - ingress routes traffic to a Service, that then routes it to a Pod
+
+  * client -> Ingress -> Service -> Pods
 
 sample
 
