@@ -99,10 +99,138 @@ rules:
 * admission controller - intercept requests to the Kubernetes API after authentication and authorization but before any objects are persisted
 
   * can be used to validate, deny, or modify requests
-* read more -> <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/>
+  * multiple come built in; supports creating your own
+  * run `kube-apiserver -h | grep enable-admission-plugins` to list the enabled plugins  
+* `kube-apiserver --enable-admission-plugins=...` is the flag on the `kube-apiserver` command to enable/add admission controllers
+* `kube-apiserver --disable-admission-plugins=` is the flag on the `kube-apiserver` command to disableable admission controllers; supercedes `--enable-admission-plugins` if a controller appears in both
+* read more on admission controllers-> <https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/>
 
-Compute Resource Management
+### Compute Resource Management
 
-Application Configuration
+* resource requests - gives the cluster an idea of how many resources a container is **expected** to use
 
-Security Context
+  * cluster uses this to select a node with enough available resources
+* resource limits - sets an upper limit on how many resources a container is **allowed** to use 
+
+  * cluster uses this to terminate a container process using more than the resources limit
+
+sample Pod spec with resource requests and limits 
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+```
+
+* read more on resource management -> <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/>
+* ResourceQuota - kubernetes object that sets limits on the resources used within a Namespace
+
+  * enforced via an admission controller - the `--enable-admission-plugins=`flag must have `ResourceQuota` in it
+  * denies requests trying to create or modify a resource outside the limit
+
+sample ResourceQuota object
+
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pods-high
+spec:
+  hard:
+    cpu: "1000"
+    memory: 200Gi
+    pods: "10"
+  scopeSelector:
+    matchExpressions:
+    - operator : In
+      scopeName: PriorityClass
+      values: ["high"]
+```
+
+* read more on resource quotas -> <https://kubernetes.io/docs/concepts/policy/resource-quotas/>
+
+### Application Configuration
+
+##### storing configuration data
+
+* ConfigMap - object that stores configuration data for the applications in the form of key-value pairs
+
+  * can be passed to containers at runtime
+  * read more on ConfigMaps -> <https://kubernetes.io/docs/concepts/configuration/configmap/>
+
+sample ConfigMap object
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-demo
+data:
+  # property-like keys; each key maps to a simple value
+  player_initial_lives: "3"
+  ui_properties_file_name: "user-interface.properties"
+
+  # file-like keys
+  game.properties: |
+    enemy.types=aliens,monsters
+    player.maximum-lives=5    
+  user-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true    
+```
+
+* Secrets - stores data to be passed into containers, but specifically sensitive data e.g. passwords, tokens
+
+  * optionally can be encrypted 
+  * use `kubectl create secret` to create a secret with the specified file(s)
+  * use a Kustomization file to create a secret
+  * use a config file for a Secret object to create a secret 
+  * read more on Secrets -> <https://kubernetes.io/docs/concepts/configuration/secret/>
+
+sample Secret object
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+```
+
+##### passing configuration data
+
+* volume mounts - data appears in the container's filesystem at runtime
+
+  * each top-level key becomes a file name
+* environment variables - data appears as environment variables in the container at runtime
+
+  * option to specify specific keys and variable names for each piece of data
+
+
+
+### Security Context
