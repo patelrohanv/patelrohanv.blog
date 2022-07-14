@@ -70,6 +70,22 @@ can also scale by using `kubectl edit` to edit the deployment
 
 ### Deployment Strategies
 
-*
+* deployment strategy - method of rolling out new code
+
+###### Blue/Green
+
+* uses 2 identical production environments; new code is rolled out to the 2nd environment (green) and validated before redirecting traffic to the 2nd environment from the 1st (blue)
+* blue - active environment; green - new environment
+* you can use multiple Deployments to set up blue/green environments
+
+  * use labels and selectors on Services to direct user traffic to different Pods
+
+###### Canary
+
+* uses 2 production environments; portion of user base is directed to the environment with the new code (canary) to validate before rolling out all users
+* simple way to set up a canary environment is using a Service that selects Pods from 2 different Deployments 
+
+  * vary the number of replicas to direct fewer users to the canary 
+* read more -> <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#canary-deployment>
 
 ### Helm
