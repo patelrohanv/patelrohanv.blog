@@ -60,12 +60,16 @@ can also scale by using `kubectl edit` to edit the deployment
 
 * **Rolling updates** allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones
 * read more -> <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment>
-* triggered if and only if the Deployment's Pod template is changed, e.g. if the labels or container images of the template are updated
+* rollout triggered if and only if the Deployment's Pod template is changed, e.g. if the labels or container images of the template are updated
+
   * Other updates, such as scaling the Deployment, do not trigger a rollout
   * trigger with `kubectl set image` to change the image version/tag 
   * trigger with `kubectl edit` to edit the deployment 
-
+  * check status with `kubectl rollout status`
+  * roll back an update with `kubectl rollout undo`
 
 ### Deployment Strategies
+
+*
 
 ### Helm
