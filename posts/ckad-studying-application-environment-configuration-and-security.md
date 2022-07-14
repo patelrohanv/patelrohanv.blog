@@ -231,6 +231,33 @@ data:
 
   * option to specify specific keys and variable names for each piece of data
 
-
-
 ### Security Context
+
+* security context - part of the Pod and container spec that allows for control over advanced security-related settings
+
+###### usecases
+
+* customizing the UID and/or GID used by the container process
+* enable/disable privilege escalation for the container process
+* setting the container's root filesysystem to read-only
+
+sample Pod spec with `securityContext` being set on the both the Pod and container
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-2
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+  - name: sec-ctx-demo-2
+    image: gcr.io/google-samples/node-hello:1.0
+    securityContext:
+      runAsUser: 2000
+      allowPrivilegeEscalation: false
+
+```
+
+* read more on security context -> <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>
