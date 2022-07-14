@@ -64,9 +64,15 @@ spec:
 
 ### Services
 
-* s
+* service - allows you to expose an application running across multiple Pods to the network
+* clients communicating with a service have their traffic automatically routed to an underlying Pod
 
-sample
+##### Service Types
+
+* ClusterIP Service - exposes the application within the cluster network where it can be accessed by other Pods
+* NodePort Service - exposes the application externally by listening on an external port on each cluster node
+
+sample Service mapping port 80 to port 9376 on any Pod with the app=MyApp label.
 
 ```yaml
 apiVersion: v1
@@ -86,7 +92,8 @@ spec:
 
 ### Ingress
 
-* s
+* ingress - Kubernetes object that manages access to Services from outside the cluster
+* ingress routing
 
 sample
 
