@@ -8,4 +8,149 @@ tags:
   - software-dev
   - CKAD
 ---
-Application Design and Build
+### Container Images
+
+* image - lightweight, standalone file containing all the software and executables needed to run a container
+
+  * allows us to package the application to run in a container
+* `Dockerfile` - defines what is contained in an image (using Docker)
+
+  * image is built from the `Dockerfile` with `docker build` - <https://docs.docker.com/engine/reference/commandline/build/> or `docker image build` <https://docs.docker.com/engine/reference/commandline/image_build/>
+  * image can be saved to a file with `docker save` - <https://docs.docker.com/engine/reference/commandline/save/> or `docker image save` <https://docs.docker.com/engine/reference/commandline/image_save/>
+
+Dockerfile Format
+
+```dockerfile
+# INSTRUCTION arguments
+FROM node:12-alpine
+RUN apk add --no-cache python2 g++ make
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
+```
+
+### Jobs and CronJobs
+
+* (Kubernetes) Job - containerized single task designed to be run successfully to completion
+
+  * part of the Batch API
+  * sample Job config -> more documentation at <https://kubernetes.io/docs/concepts/workloads/controllers/job/>
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl:5.34
+        command: ["perl",  "-Mbignum=bpi", "-wle", "'print bpi(2000)'"]
+      restartPolicy: Never
+  backoffLimit: 4
+```
+
+^ run with `kubectl apply -f <file_name>`
+
+* CronJob - job(s) running periodically according a to a schedule
+
+  * uses cron expressions for `schedule` - <https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm>
+  * sample CronJob manifest -> more documentation at <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/>
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+```
+
+* `restart policy` for a Job or CronJob Pod must be `OnFailure` or `Never` - jobs are meant to run once to completion
+* `activeDeadlineSeconds` can be used in the Job spec to terminate long running jobs 
+
+### Pods
+
+* pods - group of one or more containers, with shared storage and network resources, and a specification for how to run the containers
+
+  * smallest deployable units of computing that you can create and manage in Kubernetes
+* sample pod -> more documentation at <https://kubernetes.io/docs/concepts/workloads/pods/>
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+```
+
+^ run with `kubectl apply -f <file_name>`
+
+### Multi-Container Pods
+
+* multi-container pods - Pods that include multiple containers working together
+* only use when the containers need to be tightly coupled, e.g. sharing network or storage volume resources 
+
+  * most of the time, running multiple Pods to run multiple containers is the preferred method 
+
+##### Design Patterns
+
+* sidecar - additional container performs task to assist the main container
+
+  * e.g. sidecar container making updates to the files in a shared volume that the main container serves
+* ambassador - additional container proxies network traffic to/from the main container
+* adapter - additional container transforms the main container's output 
+
+  * e.g. adapter container transforming log data coming from the main container into a standard format
+
+### Init Containers
+
+* init container - container that runs to complete a task before the Pod's main container starts up 
+* can use a separate image from the main container
+* can be used to delay the startup of the main container's startup until preconditions are met
+* sample pod specification with init containers -> more documentation at <https://kubernetes.io/docs/concepts/workloads/pods/init-containers/>
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+  - name: init-mydb
+    image: busybox:1.28
+    command: ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
+```
+
+### Container Storage
