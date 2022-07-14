@@ -8,4 +8,12 @@ tags:
   - software-dev
   - CKAD
 ---
-Application Observability and Maintenance
+### API Deprecation Policy
+
+### Probes and Health Checks
+
+### Monitoring
+
+### Container Logging
+
+### Debugging
