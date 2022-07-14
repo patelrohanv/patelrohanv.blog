@@ -89,3 +89,19 @@ can also scale by using `kubectl edit` to edit the deployment
 * read more -> <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#canary-deployment>
 
 ### Helm
+
+* Helm is a package manager for Kubernetes applications; it allows easy installation of software in your cluster
+* Helm commands -> <https://helm.sh/docs/helm/>
+
+###### Helm Charts
+
+* Helm software package, contains all the Kubernetes resource definitions needed to get applications up and running in the cluster
+* install Charts with `helm install`
+* uninstall Charts with `helm uninstall`
+
+###### Helm Repository
+
+* collection of available Charts
+* add repositories with `helm repo add`
+* update your repositories after adding one with `helm repo update`
+* list all packages in a repository with `helm search repo`
