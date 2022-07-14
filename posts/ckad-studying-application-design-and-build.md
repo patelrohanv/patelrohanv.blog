@@ -170,13 +170,21 @@ spec:
 
   * defined in the container spec - defines the path where the volume data will appear at runtime
   * attaches the volume to a specific container 
+
+##### Volume Types
+
 * volume type - defines where and how the data storage is handled
 
-  * hostPath - data is stored in a specific location directly on the host file system, on the Kubernetes node where the Pod is running
+  * `hostPath` - data is stored in a specific location directly on the host file system, on the Kubernetes node where the Pod is running
 
     * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#hostpath>
+  * `type: Directory` - mounts an existing directory on the host
+  * `type: DirectoryOrCreate` - mounts a directory on the host; creates if it doesn't exist
+  * `type: File` - mounts an existing (single) file on the host
+  * `type: FileOrCreate` - mounts a (single) file on the host; creates if it doesn't exist
 
 sample spec using hostPath
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -198,12 +206,13 @@ spec:
       type: Directory
 ```
 
-  * emptyDir - data is stored in an automatically managed location on the host file system; data is deleted if Pod is deleted (temporary storage)
+* `emptyDir` - data is stored in an automatically managed location on the host file system; data is deleted if Pod is deleted (temporary storage)
 
-    * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>
-    * more reading on ephemeral volumes -> <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/>
+  * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>
+  * more reading on ephemeral volumes -> <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/>
 
 sample spec using emptyDir
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -220,7 +229,76 @@ spec:
   - name: cache-volume
     emptyDir: {}
 ```
-  * persistentVolumeClaim - data is stored using a `PersistentVolume`
 
-    * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim>
-    * more reading on persistent volumes -> <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
+* `persistentVolumeClaim` - data is stored using a `PersistentVolume`
+
+  * defines a request to consume a storage resource - includes details on the type of storage needed
+  * **automatically binds to an available `PersistentVolume` that needs the provided requirements**
+  * mounted in a Pod like any other volume
+  * more reading -> <https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim>
+
+###### Persistent Volumes
+
+* `PersistentVolume` - defines an abstract storage resource ready for the Pods to consume
+
+  * allows you to abstract storage details away from Pods; treats storage volume like a resource
+  * defines details about the type and amount of storage provided
+* more reading on persistent volumes -> <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
+
+sample `PersistentVolume` - defines the abstract stroage resource
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: block-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+  fc:
+    targetWWNs: ["50060e801049cfd1"]
+    lun: 0
+    readOnly: false
+```
+
+sample `PersistentVolumeClaim` - defines request to consume abstract storage resource
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: block-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 10Gi
+```
+
+sample Pod spec using the `PersistentVolumeClaim` - requests abstract storage resource
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-block-volume
+spec:
+  containers:
+    - name: fc-container
+      image: fedora:26
+      command: ["/bin/sh", "-c"]
+      args: [ "tail -f /dev/null" ]
+      volumeDevices:
+        - name: data
+          devicePath: /dev/xvda
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: block-pvc
+```
