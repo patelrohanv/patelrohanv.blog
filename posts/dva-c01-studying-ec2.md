@@ -140,6 +140,9 @@ tags:
   * latest generation provisioned IOPS volume
   * same price as io1
 * Provisioned IOPS SSD io2 Block Express
+
+  * provides high performance, sub-millisecond latency SAN performance in the cloud
+  * suitable for the largest, most critical, high-performance applications
 * Throughput Optimized HHD (st1)
 
   * suitable for Big Data, data warehouses, ETL, log processing, throughput intensive workloads
