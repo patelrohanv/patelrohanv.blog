@@ -5,6 +5,7 @@ author: rohan
 summary: summary of creational software design patterns
 tags:
   - software-dev
+  - design-patterns
 ---
 # Creational patterns
 
