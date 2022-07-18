@@ -201,8 +201,6 @@ tags:
     * your application is probably having issues
     * solve the error by identifying the problem and fixing your application
 
-
-
 ### Route53
 
 * <https://aws.amazon.com/route53/>
@@ -310,3 +308,9 @@ tags:
 * good choice for read heavy data that doesn't change often
 * not a good choice for heavy write loads
 * not a good choice for OLAP usecases
+
+
+
+### Systems Manager Parameter Store
+
+* <https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html>
