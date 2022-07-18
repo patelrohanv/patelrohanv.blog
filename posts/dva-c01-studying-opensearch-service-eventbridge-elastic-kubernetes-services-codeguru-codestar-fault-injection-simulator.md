@@ -45,6 +45,7 @@ tags:
 ##### What it is
 
 * <https://aws.amazon.com/codestar/>
+* cloud-based development service 
 * no additional charge for using AWS CodeStar; only pay for the AWS resources that you provision
 
 ### Fault Injection Simulator
