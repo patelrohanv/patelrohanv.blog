@@ -143,6 +143,7 @@ tags:
 
   * provides high performance, sub-millisecond latency SAN performance in the cloud
   * suitable for the largest, most critical, high-performance applications
+  * support up to 64 TB and 256,000 IOPS per volume
 * Throughput Optimized HHD (st1)
 
   * suitable for Big Data, data warehouses, ETL, log processing, throughput intensive workloads
