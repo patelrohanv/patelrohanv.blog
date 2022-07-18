@@ -1,10 +1,11 @@
 ---
-title: DVA-C01 studying -  EC2, EBS, Elastic Load Balancer, RDS, Elasticache
+title: DVA-C01 studying -  EC2, EBS, Elastic Load Balancer, RDS, Elasticache,
+  Systems Manager Parameter Store
 date: 2022-07-05T15:15:27.099Z
 author: rohan
 summary: studying for the AWS Certified Developer Associate exam - Elastic
   Compute Cloud, Elastic Block Store, Elastic Load Balancer, Relational Database
-  Service, Elasticache
+  Service, Elasticache, Systems Manager Parameter Store
 tags:
   - DVA-C01
   - software-dev
