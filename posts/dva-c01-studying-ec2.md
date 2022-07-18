@@ -139,6 +139,7 @@ tags:
   * up to 99.999% durability
   * latest generation provisioned IOPS volume
   * same price as io1
+* Provisioned IOPS SSD io2 Block Express
 * Throughput Optimized HHD (st1)
 
   * suitable for Big Data, data warehouses, ETL, log processing, throughput intensive workloads
@@ -309,8 +310,6 @@ tags:
 * good choice for read heavy data that doesn't change often
 * not a good choice for heavy write loads
 * not a good choice for OLAP usecases
-
-
 
 ### Systems Manager Parameter Store
 
