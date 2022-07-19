@@ -18,7 +18,7 @@ tags:
 
   * you can upload any file type
   * **"unlimited" storage in volume and objects count**
-  * **5TB max object size (largest object in a PUT is 5GB)**
+  * **5TB max object size (largest object in a PUT is 5GB) (no minimum size - can upload a 0byte file)**
   * objects are stored in buckets (analogous to folders)
 * key-value store
 
