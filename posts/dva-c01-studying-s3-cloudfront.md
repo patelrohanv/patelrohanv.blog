@@ -17,8 +17,8 @@ tags:
 * manages data as objects instead of files or blocks
 
   * you can upload any file type
-  * "unlimited" storage in volume and objects count
-  * 5TB max object size
+  * **"unlimited" storage in volume and objects count**
+  * **5TB max object size (largest object in a PUT is 5GB)**
   * objects are stored in buckets (analogous to folders)
 * key-value store
 
