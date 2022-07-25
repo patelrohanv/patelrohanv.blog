@@ -152,8 +152,8 @@ tags:
   * selecting the encryption setting in the console for your bucket
   * bucket policy
 
-    * for example, policy to deny requests that don't include the x-amz-server-side-encryption header 
-    * another example, policy to deny requests that do not use aws:SecureTransport to enforce HTTPS/SSL
+    * for example, policy to deny requests that don't include the **x-amz-server-side-encryption** header 
+    * another example, policy to deny requests that do not use **aws:SecureTransport** to enforce HTTPS/SSL
 
 ### Cloudfront
 
