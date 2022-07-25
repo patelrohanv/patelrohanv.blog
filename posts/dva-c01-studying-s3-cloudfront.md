@@ -133,6 +133,11 @@ tags:
   * logs can be written to another bucket
   * not enabled by default
 * **S3 objects are private by default, owners can create a presigned URL (using their own credentials) to grant time limited permission to access the object**
+* helpful CloudFront services for securing access 
+
+  * **CloudFront Signed Cookies**
+  * **CloudFront Origin Access Identity**
+  * **CloudFront Signed URLs** 
 
 ##### Encryption
 
