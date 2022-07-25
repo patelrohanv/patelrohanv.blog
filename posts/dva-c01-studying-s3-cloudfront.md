@@ -46,7 +46,7 @@ tags:
 
 ##### Cross Origin Resource Sharing (CORS)
 
-* sharing resources between services in the same origin, e.g. one bucket trying to use a file in another
+* **sharing resources between services in the same origin, e.g. one bucket trying to use a file in another**
 * grant read access to your buckets and files
 * edit CORS setting in your bucket
 
@@ -110,9 +110,10 @@ tags:
 
 * universal namespace across all AWS accounts
 
-  * each S3 bucket is globally unique
-  * URLS follow an https://<bucket>.s3.Region.amazonaws.com/<key>
-* successfully uploading a file to a bucket returns a 200
+  * **each S3 bucket is globally unique**
+  * **URLS follow an https://<bucket>.s3.<Region>.amazonaws.com/<key> or https://<bucket>.s3-<Region>.amazonaws.com/<key>**
+* **by default all S3 buckets and objects are private**
+* **successfully uploading a file to a bucket returns a 200**
 
 ##### Securing Buckets
 
@@ -131,6 +132,7 @@ tags:
 
   * logs can be written to another bucket
   * not enabled by default
+* **S3 objects are private by default, owners can create a presigned URL (using their own credentials) to grant time limited permission to access the object**
 
 ##### Encryption
 
@@ -141,9 +143,10 @@ tags:
 * server side encryption (encryption at rest)
 
   * set default encryption to encrypt all new objects being stored in a bucket
-  * SSE-S3 - S3 managed keys (AES-256bit encryption)
+  * SSE-S3 - S3 managed keys (AES-256encryption)
   * SSE-KMS - AWS Key Management Service 
   * SSE-C - customer provided keys
+  * **Exam tip, remember all three and that S3 is AES-256**
 * client side encryption (encryption at rest)
 
   * you encrypt the files yourself before you upload them
@@ -152,8 +155,8 @@ tags:
   * selecting the encryption setting in the console for your bucket
   * bucket policy
 
-    * for example, policy to deny requests that don't include the **x-amz-server-side-encryption** header 
-    * another example, policy to deny requests that do not use **aws:SecureTransport** to enforce HTTPS/SSL
+    * for example, policy to deny put object requests that don't include the **"s3:x-amz-server-side-encryption": "true"** header to enforce server-side encryption
+    * another example, policy to deny requests that do not use "**aws:SecureTransport": "false"** to enforce HTTPS/SSL
 
 ### Cloudfront
 
