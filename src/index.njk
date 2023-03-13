@@ -40,7 +40,6 @@ section: home
   {% from "macros/articlelist.njk" import articlelist %}
   {{ articlelist(
     articles = collections.post | reverse,
-    show_tags = false,
-    limit = 3
+    limit = 6
   ) }}
 </div>
