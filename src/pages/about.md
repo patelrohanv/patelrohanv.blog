@@ -9,23 +9,12 @@ eleventyNavigation:
   order: 1
 ---
 
-### What is Fernfolio?
-An [Eleventy](https://www.11ty.io/) theme designed to simplify the process of creating a beautiful portfolio and blog. Tightly integrated with [Netlify CMS](https://www.netlifycms.org/) for flexible, Git-powered content management.
+### About
+`Howdy, I'm Rohan, a tech enthusiast living in Austin, TX. Did my undergrad at Pitt in Comp Sci and lived in Pittsburgh for about a decade, then moved to Austin. Professional software engineer, part time coding instructor, dnd player, dog dad, and amateur amateur photographer, struggling gardener, Trader Joe's enthusiast and grad school dropout who enjoys: cooking, fermenting (kombucha, water kefir, milk kefir), coffee, technology, comicbooks, Star Wars, Dr. Who, weeb stuff, boardgames, reading, spirituality, hiking, and lists.
 
-### Why create this?
+I don't much for social media so this is my place to post things I want to post.
 
-**Reason #1:** I wanted a portfolio that was simple, fast, accessible, and integrated with a git-powered cms. Existing templates didn't perfectly fit my needs, so I decided to build my own template.
+### About This
+This site was built using [Fernfolio](https://tylerroderick.com/projects/fernfolio/) by [Tyler M. Roderick](https://www.tylerroderick.com/)
 
-**Reason #2:** I wanted to learn more about [Eleventy](https://www.11ty.dev/) and static site generators in general. Building Fernfolio was a good excuse to dive deeper on that topic.
-
-### How do I edit content?
-Once your site is deployed and configured, add `/admin` to the end of the url (not using localhost) and hit refresh. From there, you should be able to login and see see the content management dashboard. You should be able to change most content here (e.g. page text, images, logo, articles, projects, etc.).
-
-### Further customizations
-If you want to take your customizations further, you will need to modify the project source code. Some customizations, like changing theme colors and fonts, are straightforward (those can be modified in the `variables.scss` file). Other customizations will require more in-depth solutions.
-
-If you get stuck or just have a question, feel free to create a [Github issue](https://github.com/TylerMRoderick/fernfolio-11ty-template/issues) and I will try to point you in the right direction.
-
-Thanks for checking out Fernfolio 👋 - [Tyler M. Roderick](https://www.tylerroderick.com/)
-
-![Fern in Hand](/src/assets/img/fern-forest.jpeg "Fern in Hand")
+Went with Tyler's plugin because it's an [Eleventy](https://www.11ty.io/) theme that is tightly integrated with [Netlify CMS](https://www.netlifycms.org/) for flexible, Git-powered content management.
