@@ -82,7 +82,11 @@ Python is known for its simple and clean syntax, which makes it easy to read and
 Variables are used to store values in Python. To create a variable, simply assign a value to a name:
 
 ```python
+# Define a variable called "message" and assign it a string value
 message = "Hello, world!"
+
+# Print the value of the "message" variable
+print(message)
 ```
 
 ### **Data Types**
@@ -295,3 +299,66 @@ If you're interested in learning more about Python, there are many online resour
 - **[Stack Overflow](https://stackoverflow.com/questions/tagged/python)**: A community-driven question-and-answer site for programming questions, with a large and active Python community.
 
 With these resources and the knowledge you've gained from this post, you're well on your way to becoming a proficient Python programmer. Good luck, and happy coding!
+
+### Code Examples
+Here are some commented code examples that demonstrate different aspects of Python programming that we just went over:
+```python 
+# Define a function called "greet" that takes a name argument and prints a greeting
+def greet(name):
+    print("Hello, " + name + "!")
+
+# Define a function called "calculate" that takes two numbers and an operation and returns the result
+def calculate(x, y, op):
+    if op == "+":
+        return x + y
+    elif op == "-":
+        return x - y
+    elif op == "*":
+        return x * y
+    elif op == "/":
+        return x / y
+    else:
+        return None
+
+# Define a main function that uses a loop to ask the user for their choice and perform the selected action
+def main():
+    while True:
+        # Ask the user for their choice of action (greet, calculate, or quit)
+        choice = input("What would you like to do? (greet/calculate/quit) ")
+        
+        # If the user chooses to greet, ask for their name and print a greeting
+        if choice == "greet":
+            name = input("What is your name? ")
+            greet(name)
+        
+        # If the user chooses to calculate, ask for two numbers and an operation, perform the calculation, and print the result
+        elif choice == "calculate":
+            x = float(input("Enter the first number: "))
+            y = float(input("Enter the second number: "))
+            op = input("Enter the operation (+, -, *, /): ")
+            result = calculate(x, y, op)
+            if result is None:
+                print("Invalid operation")
+            else:
+                print("Result:", result)
+        
+        # If the user chooses to quit, exit the loop and terminate the program
+        elif choice == "quit":
+            break
+        
+        # If the user enters an invalid choice, print an error message
+        else:
+            print("Invalid choice")
+
+if __name__ == "__main__":
+    main()
+
+```
+This Python code defines two functions (`greet` and `calculate`) and a `main` function that uses a loop to ask the user for their choice of action and perform the selected action.
+
+The greet function takes a name argument and prints a greeting. The `calculate` function takes two numbers and an operation (+, -, *, /) and returns the result of the calculation. If the operation is not valid, the function returns `None`.
+
+The `main` function uses a `while` loop to repeatedly ask the user for their choice of action (greet, calculate, or quit). If the user chooses to greet, the program asks for their name and prints a greeting. If the user chooses to calculate, the program asks for two numbers and an operation, performs the calculation, and prints the result. If the user chooses to quit, the program exits the loop and terminates.
+
+The program also includes error handling for invalid choices and invalid operations. If the user enters an invalid choice, the program prints an error message. If the user enters an invalid operation when calculating, the program prints an error message.
+
