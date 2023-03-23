@@ -19,7 +19,7 @@ If the player chooses to stand, the dealer will reveal their second card and con
 - If the dealer's total goes over 21 points, the player wins the game.
 - If neither the player nor the dealer goes over 21 points, the winner is the one with the higher score.
 - The game should include error handling for invalid input and should allow the player to play again or quit the game.
-- 
+
 ## Starter Code
 ```python
 import random
