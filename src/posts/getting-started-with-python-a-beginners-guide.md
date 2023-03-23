@@ -1,5 +1,5 @@
 ---
-title: " Getting Started with Python: A Beginner's Guide"
+title: " Getting Started with Python"
 date: 2023-03-23T17:57:20.518Z
 summary: Quick getting started guide for Python
 tags:
