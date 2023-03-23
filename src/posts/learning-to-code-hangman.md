@@ -1,7 +1,7 @@
 ---
-title: "Learning to Code: Hangman"
+title: "Learning to Code: Calculator"
 date: 2023-03-23T14:02:37.332Z
-summary: practice problem to make a game of hangman in Python
+summary: practice problem to make a CLI calculator in Python
 tags:
   - learn-to-code
 ---
