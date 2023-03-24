@@ -5,7 +5,6 @@ summary: It’s been a while since I took CS 1501 - Algorithms, and wrote a
   refresher post on Data Structures, so figured I why not write another post.
 tags:
   - software-dev
-  - learn-to-code
 ---
 It’s been a while since I took CS 1501 - Algorithms, and wrote a refresher post on Data Structures, so figured I why not write another post.
 
