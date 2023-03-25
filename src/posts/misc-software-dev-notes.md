@@ -4,11 +4,12 @@ title: misc software dev notes
 date: 2022-08-17T19:56:39.201Z
 author: rohan
 summary: "talking points on miscellaneous software dev topics "
-tags: [software-dev]
+tags:
+  - software-dev
 ---
 Between explaining topics to jr devs and teaching at the "devops and software engineering" class at a coding bootcamp, wrote up some quick talking points on a handful of common topics 
 
-# Software Development Life Cycle (SDLC) - Week 1
+# Software Development Life Cycle (SDLC)
 
 * the different stages of developing an application: planning -> design -> implementation -> testing -> deployment/shipping
 * Methodology -> set of practices around the SDLC
@@ -27,7 +28,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
     * Gather Requirements -> Design Application -> Implement Design -> Test implementation -> Deploy to production -> Maintenance
   * Not designed for adapting to change; practical for building physical products, not the most practical for building software
 
-# Git - Week 1
+# Git
 
 * Version control system, manage and track changes in your repository (code)
 * Supports branching and merging to separate stable code from development 
@@ -43,7 +44,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
   * `git pull` - fetch and merge changes from the remote repository
   * `git push` - sent changes to the remote repository
 
-# Docker - Week 1, 2
+# Docker
 
 * Runs your code inside container instead of a virtual machine
 
@@ -70,7 +71,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
 * Networking
 * Logs
 
-# Devops - Week 2, 3, 4
+# Devops
 
 * Bridging the gap between traditional operations and development where development was responsible for writing, testing, building, patching, and maintaining the codebase while operations was responsible for taking the built software and running it, setting up and managing the servers, their operating systems, networking, the physical hardware
 
@@ -83,13 +84,13 @@ Between explaining topics to jr devs and teaching at the "devops and software en
   * Most of these tools all run on the web and are either hosted locally or on the cloud; each is usually administrable, configurable, scriptable, and extendable 
 * Can be extended to DevSecOps by integrating security with tools like code analysis, vulnerability scans, etc
 
-# Cloud Computing - Week 2
+# Cloud Computing
 
 * Outsourcing your IT infrastructure to the cloud
 
   * Renting someone else’s hardware that you can access from anywhere instead of buying and managing your own physical hardware
 
-# Common Services - Cloud or OnPrem - Week 2, 3, 4
+# Common Services - Cloud or OnPrem
 
 * Identity and Access Management -> services to administer/control policies for individual and group authentication (who can access) and authorization (who has what permissions) for your organization’s resources 
 * Serverless compute
@@ -134,7 +135,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
   * Continuous Delivery ->  producing software in short cycles with high speed and frequency
   * Continuous Deployment -> rolling out completely new software functionality automatically
 
-### Amazon Web Services - AWS - Week 2
+### Amazon Web Services - AWS
 
 * serverless compute -  AWS Lambda
 * Elastic Compute Cloud (EC2)
@@ -142,7 +143,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
 * DBaaS - Relational Database Service (RDS) 
 * Container registry service - Elastic Container Registry (ECR)
 
-### Google Cloud Platform - GCP - Week 3
+### Google Cloud Platform - GCP
 
 * serverless compute - Cloud Functions
 * Google Cloud Shell
@@ -155,7 +156,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
 * Artifact Repository 
 * Cloud Deploy
 
-### Microsoft Azure - Week 4
+### Microsoft Azure
 
 * serverless compute - Azure Functions
 * Azure CLI
@@ -163,7 +164,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
 * Container registry service - Azure Container Registry
 * DBaaS - Azure Database for PostgreSQL
 
-# Testing - Week 3
+# Testing
 
 * Arrange, act, assert -> good tests should have three iterative stages, first arrange your inputs, second call function with the arranged inputs, lastly make your asserts to verify that your function is functioning as intended
 * Unit testing -> testing code by unit of functionality 
@@ -185,7 +186,7 @@ Between explaining topics to jr devs and teaching at the "devops and software en
   * How -> gather requirements, tasks, stories, etc.; write tests to arrange an input, call a function; validate that it works as expected; run the test (knowing it will fail); refactor the function to  make the test pass
   * Why -> code that is hard to test is usually poorly designed; helps you catch bugs and keep your code decoupled I.e. easier to test. Software is built in units, units are integrated into features 
 
-# Kubernetes - Week 4
+# Kubernetes
 
 * A container orchestration tool - responsible for allocating and scheduling containers, abstracting away things like networking and storage volumes between them, monitoring the health of containers, repairing unhealthy containers
 * Kubernetes manages a bunch of Nodes (VMs or bare metal) as a cluster; each Node runs a bunch of Docker Containers 
