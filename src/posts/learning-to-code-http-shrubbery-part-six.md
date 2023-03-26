@@ -4,7 +4,7 @@ date: 2023-03-26T04:14:46.114Z
 summary: An iterative practice assignment to build up a virtual shrubbery. Part
   Six, HTTP
 tags:
-  - how-to-code
+  - learn-to-code
   - shrubbery
 ---
 ## **Overview**
