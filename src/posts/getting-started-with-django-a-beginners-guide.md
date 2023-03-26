@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Django: A Beginner's Guide"
+title: Getting Started with Django
 date: 2023-03-26T02:46:25.768Z
 summary: Quick getting started guide for Django
 tags:
