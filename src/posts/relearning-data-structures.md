@@ -7,6 +7,7 @@ summary: >
   next time I get rusty. 
 tags:
   - software-dev
+  - learn-to-code
 ---
 It’s been a while since I took CS 445 - Data Structures, so figured I why not write a post to give myself a refresher and make a reference to look at later next time I get rusty. 
 
