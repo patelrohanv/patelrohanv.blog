@@ -4,7 +4,7 @@ date: 2023-03-26T05:02:04.068Z
 summary: An iterative practice assignment to build up a virtual shrubbery. Part
   Zero.Two, Git
 tags:
-  - how-to-code
+  - learn-to-code
   - shrubbery
 ---
 ## **Overview**
