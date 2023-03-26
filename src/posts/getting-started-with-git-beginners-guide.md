@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Git - Beginners Guide
+title: Getting Started with Git
 date: 2023-03-25T16:52:15.264Z
 summary: Quick getting started guide for Git
 tags:
