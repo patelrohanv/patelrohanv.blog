@@ -5,6 +5,7 @@ summary: An overview of Software Design Patterns, keeping the theme of a Shrubbe
 tags:
   - software-dev
   - learn-to-code
+  - shrubbery
 ---
 # **Overview of Software Design Patterns**
 
