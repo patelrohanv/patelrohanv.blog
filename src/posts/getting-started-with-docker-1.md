@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Docker
+title: " Terminal and File System Basics"
 date: 2023-04-07T23:25:45.845Z
 summary: terminal and file system basics
 tags:
