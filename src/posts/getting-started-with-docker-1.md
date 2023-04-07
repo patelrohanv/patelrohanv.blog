@@ -103,9 +103,7 @@ You can also combine multiple single-character flags into one. For instance, to 
 
 **`Arguments`** are the inputs required for the command to operate on, such as file names, directory paths, or search strings. For example, when using the **`cd`** command to navigate to a directory, the directory path is an argument:
 
-```
-bash
-
+```bash
 cd Documents
 ```
 
