@@ -303,6 +303,187 @@ for i, value in enumerate(fizz_buzz_list, start=1):
 - Pros: No loop or conditional statements, more efficient in some cases.
 - Cons: Less readable and more difficult to understand, not as modular or reusable.
 
+# Something actually readable (Go)
+
+## 1. Simple Loop and Conditionals
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    for i := 1; i <= 100; i++ {
+        if i % 15 == 0 {
+            fmt.Println("FizzBuzz")
+        } else if i % 3 == 0 {
+            fmt.Println("Fizz")
+        } else if i % 5 == 0 {
+            fmt.Println("Buzz")
+        } else {
+            fmt.Println(i)
+        }
+    }
+}
+```
+
+**Trade-offs:**
+
+- Simplicity: Easy to understand and implement.
+- Readability: Clear and straightforward code.
+- Modularity: Limited, as the logic is embedded in the main function.
+- Runtime: Efficient since there's only one loop.
+- Memory: Minimal memory overhead.
+
+## 2. Function and Switch Statement
+
+```go
+package main
+
+import "fmt"
+
+func fizzBuzz(n int) string {
+    switch {
+    case n % 15 == 0:
+        return "FizzBuzz"
+    case n % 3 == 0:
+        return "Fizz"
+    case n % 5 == 0:
+        return "Buzz"
+    default:
+        return fmt.Sprintf("%d", n)
+    }
+}
+
+func main() {
+    for i := 1; i <= 100; i++ {
+        fmt.Println(fizzBuzz(i))
+    }
+}
+```
+
+**Trade-offs:**
+
+- Simplicity: Slightly more complex than the first implementation due to the use of a function.
+- Readability: Clear code, but the switch statement without an expression may be unfamiliar to some developers.
+- Modularity: More modular, as the logic is separated into a function.
+- Runtime: Similar efficiency as the first implementation.
+- Memory: Minimal memory overhead, though slightly more than the first implementation due to the function call.
+
+## 3. Using an Anonymous Function
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    fizzBuzz := func(n int) string {
+        switch {
+        case n % 15 == 0:
+            return "FizzBuzz"
+        case n % 3 == 0:
+            return "Fizz"
+        case n % 5 == 0:
+            return "Buzz"
+        default:
+            return fmt.Sprintf("%d", n)
+        }
+    }
+
+    for i := 1; i <= 100; i++ {
+        fmt.Println(fizzBuzz(i))
+    }
+}
+```
+
+**Trade-offs:**
+
+- Simplicity: Introduces the concept of anonymous functions, making it slightly more complex than the basic implementation.
+- Readability: Clear code, but the use of an anonymous function may be unfamiliar to some developers.
+- Modularity: Moderate, as the logic is encapsulated within an anonymous function.
+- Runtime: Similar efficiency as the first implementation.
+- Memory: Minimal memory overhead, comparable to the second implementation.
+
+## 4. Using a Custom Type and Method
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+type FizzBuzz int
+
+func (n FizzBuzz) String() string {
+    switch {
+    case n % 15 == 0:
+        return "FizzBuzz"
+    case n % 3 == 0:
+        return "Fizz"
+    case n % 5 == 0:
+        return "Buzz"
+    default:
+        return fmt.Sprintf("%d", n)
+    }
+}
+
+func main() {
+    for i := 1; i <= 100; i++ {
+        fmt.Println(FizzBuzz(i))
+    }
+}
+```
+
+**Trade-offs:**
+
+- Simplicity: More complex than the basic implementation, as it uses a custom type and method.
+- Readability: Clean code, but the use of a custom type and method may be more difficult for some developers to understand.
+- Modularity: High, as the logic is encapsulated within a method for the custom type.
+- Runtime: Similar efficiency as the first implementation.
+- Memory: Minimal memory overhead, comparable to the second implementation.
+
+## 5. Using a Map
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fizzBuzzMap := map[int]string{
+		3: "Fizz",
+		5: "Buzz",
+	}
+
+	for i := 1; i <= 100; i++ {
+		output := ""
+		for k, v := range fizzBuzzMap {
+			if i%k == 0 {
+				output += v
+			}
+		}
+		if output == "" {
+			output = fmt.Sprintf("%d", i)
+		}
+		fmt.Println(output)
+	}
+}
+```
+
+**Trade-offs:**
+
+- Simplicity: Slightly more complex than the basic implementation due to the use of a map.
+- Readability: The use of a map can make the code more readable and easy to extend by adding new conditions without modifying the loop.
+- Modularity: Moderate, as the logic is built into the loop, but the map makes it easy to add new conditions.
+- Runtime: Potentially slower due to the overhead of iterating over the map and appending strings.
+- Memory: Additional memory overhead from the map, but still relatively minimal.
+
 # Conclusion
 
 In conclusion, implementing FizzBuzz can be approached in numerous ways, and the choice of implementation depends on the specific goals and constraints of the project. When considering different implementations, it's crucial to keep in mind various trade-offs in terms of design, complexity, modularity, readability, memory usage, runtime performance, and language features.
